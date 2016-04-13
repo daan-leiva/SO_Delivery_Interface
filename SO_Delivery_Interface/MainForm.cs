@@ -521,27 +521,34 @@ namespace SO_Delivery_Interface
                         else
                             dataGridView_iDate.Rows[i].Cells[j].Style = dataGridView_iDate.Columns[j].DefaultCellStyle;
                     }
+                // initialize data
+                dataGridView_iDate.Rows[0].Cells[2].Value = 0;
+                dataGridView_iDate.Rows[1].Cells[2].Value = 0;
+                dataGridView_iDate.Rows[2].Cells[2].Value = 0;
+                dataGridView_iDate.Rows[3].Cells[2].Value = 0;
+                dataGridView_iDate.Rows[4].Cells[2].Value = 0;
+
 
                 // iDate Total pd
-                double total = double.Parse(dataGridView_iDate.Rows[0].Cells[0].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[0].Cells[1].Value.ToString());
-                dataGridView_iDate.Rows[0].Cells[2].Value = total;
+                double total = double.Parse(dataGridView_iDate.Rows[0].Cells[0].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[0].Cells[1].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[0].Cells[2].Value.ToString());
+                dataGridView_iDate.Rows[0].Cells[3].Value = total;
                 if (total > 0)
-                    dataGridView_iDate.Rows[0].Cells[2].Style = style;
+                    dataGridView_iDate.Rows[0].Cells[3].Style = style;
                 else
-                    dataGridView_iDate.Rows[0].Cells[2].Style = dataGridView_iDate.Columns[2].DefaultCellStyle;
+                    dataGridView_iDate.Rows[0].Cells[3].Style = dataGridView_iDate.Columns[2].DefaultCellStyle;
 
                 // iDate Total 30d
-                dataGridView_iDate.Rows[1].Cells[2].Value = double.Parse(dataGridView_iDate.Rows[1].Cells[0].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[1].Cells[1].Value.ToString());
+                dataGridView_iDate.Rows[1].Cells[3].Value = double.Parse(dataGridView_iDate.Rows[1].Cells[0].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[1].Cells[1].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[1].Cells[2].Value.ToString());
 
                 // iDate Total 90d
-                dataGridView_iDate.Rows[2].Cells[2].Value = double.Parse(dataGridView_iDate.Rows[2].Cells[0].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[2].Cells[1].Value.ToString());
+                dataGridView_iDate.Rows[2].Cells[3].Value = double.Parse(dataGridView_iDate.Rows[2].Cells[0].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[2].Cells[1].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[2].Cells[2].Value.ToString());
 
                 // iDate Total 6 mo
-                dataGridView_iDate.Rows[3].Cells[2].Value = double.Parse(dataGridView_iDate.Rows[3].Cells[0].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[3].Cells[1].Value.ToString());
+                dataGridView_iDate.Rows[3].Cells[3].Value = double.Parse(dataGridView_iDate.Rows[3].Cells[0].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[3].Cells[1].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[3].Cells[2].Value.ToString());
 
 
                 // iDate Total 1yr
-                dataGridView_iDate.Rows[4].Cells[2].Value = double.Parse(dataGridView_iDate.Rows[4].Cells[0].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[4].Cells[1].Value.ToString());
+                dataGridView_iDate.Rows[4].Cells[3].Value = double.Parse(dataGridView_iDate.Rows[4].Cells[0].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[4].Cells[1].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[0].Cells[2].Value.ToString());
 
 
                 //
