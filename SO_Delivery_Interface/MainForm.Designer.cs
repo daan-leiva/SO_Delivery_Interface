@@ -30,9 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -46,6 +43,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.BottomToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.TopToolStripPanel = new System.Windows.Forms.ToolStripPanel();
@@ -75,13 +75,7 @@
             this.openTotal_idateLabel = new System.Windows.Forms.Label();
             this.currentDateLabel = new System.Windows.Forms.Label();
             this.dataGridView_iDate = new System.Windows.Forms.DataGridView();
-            this.Firm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Forecast = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView_current = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quarter_iDateGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -124,6 +118,14 @@
             this.label10 = new System.Windows.Forms.Label();
             this.ByAllRadioButton = new System.Windows.Forms.RadioButton();
             this.label8 = new System.Windows.Forms.Label();
+            this.Firm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Forecast = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Shipped = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Shipped2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.linesDataGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_iDate)).BeginInit();
@@ -433,6 +435,7 @@
             this.dataGridView_iDate.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Firm,
             this.Forecast,
+            this.Shipped,
             this.Total});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
@@ -450,36 +453,9 @@
             this.dataGridView_iDate.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView_iDate.RowTemplate.ReadOnly = true;
             this.dataGridView_iDate.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView_iDate.Size = new System.Drawing.Size(277, 133);
+            this.dataGridView_iDate.Size = new System.Drawing.Size(283, 133);
             this.dataGridView_iDate.TabIndex = 99;
             this.dataGridView_iDate.TabStop = false;
-            // 
-            // Firm
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Firm.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Firm.HeaderText = "Firm";
-            this.Firm.Name = "Firm";
-            this.Firm.ReadOnly = true;
-            this.Firm.Width = 48;
-            // 
-            // Forecast
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Forecast.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Forecast.HeaderText = "Forecast";
-            this.Forecast.Name = "Forecast";
-            this.Forecast.ReadOnly = true;
-            this.Forecast.Width = 57;
-            // 
-            // Total
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Total.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            this.Total.Width = 65;
             // 
             // dataGridView_current
             // 
@@ -492,6 +468,7 @@
             this.dataGridView_current.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
+            this.Shipped2,
             this.dataGridViewTextBoxColumn3});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
@@ -509,30 +486,9 @@
             this.dataGridView_current.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView_current.RowTemplate.ReadOnly = true;
             this.dataGridView_current.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView_current.Size = new System.Drawing.Size(277, 133);
+            this.dataGridView_current.Size = new System.Drawing.Size(283, 133);
             this.dataGridView_current.TabIndex = 1;
             this.dataGridView_current.TabStop = false;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Firm";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 48;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Forecast";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 57;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Total";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 65;
             // 
             // quarter_iDateGridView
             // 
@@ -1042,6 +998,68 @@
             this.label8.TabIndex = 18;
             this.label8.Text = "* Note: Shipping Qty\'s and $$ do not include returns";
             // 
+            // Firm
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Firm.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Firm.HeaderText = "Firm";
+            this.Firm.Name = "Firm";
+            this.Firm.ReadOnly = true;
+            this.Firm.Width = 48;
+            // 
+            // Forecast
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Forecast.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Forecast.HeaderText = "Forecast";
+            this.Forecast.Name = "Forecast";
+            this.Forecast.ReadOnly = true;
+            this.Forecast.Width = 57;
+            // 
+            // Shipped
+            // 
+            this.Shipped.HeaderText = "Shipped";
+            this.Shipped.Name = "Shipped";
+            this.Shipped.ReadOnly = true;
+            this.Shipped.Width = 80;
+            // 
+            // Total
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Total.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            this.Total.Width = 65;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Firm";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 48;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Forecast";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 57;
+            // 
+            // Shipped2
+            // 
+            this.Shipped2.HeaderText = "Shipped";
+            this.Shipped2.Name = "Shipped2";
+            this.Shipped2.ReadOnly = true;
+            this.Shipped2.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Total";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 65;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1112,9 +1130,6 @@
         private System.Windows.Forms.Label currentDateLabel;
         private System.Windows.Forms.DataGridView dataGridView_iDate;
         private System.Windows.Forms.DataGridView dataGridView_current;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridView quarter_iDateGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
@@ -1153,13 +1168,18 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Firm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Forecast;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.RadioButton ByAllRadioButton;
         private System.Windows.Forms.Label partsShippedLabel;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Firm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Forecast;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Shipped;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Shipped2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
     }
 }
 
