@@ -22,8 +22,6 @@ namespace SO_Delivery_Interface
         public decimal Total_Price;
         public string Status;
         public DateTime Last_Updated;
-        public DateTime idate;
-
-        
+        public DateTime idate; 
     }
 }

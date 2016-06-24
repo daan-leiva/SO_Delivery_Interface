@@ -31,22 +31,21 @@ namespace SO_Delivery_Interface
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
             // set up date time picker1
-            startDateTimePicker.Value = DateTime.Today.AddDays(-1);
-            startDateTimePicker.MinDate = new DateTime(2015, 7, 29);
-            startDateTimePicker.CloseUp += this.UpdateDateLabels;
-            startDateTimePicker.CloseUp += this.Update_Monthly;
-            startDateTimePicker.CloseUp += this.Update_DueDate;
-            startDateTimePicker.CloseUp += this.UpdateMainTable;
+            idateDateTimePicker.Value = DateTime.Today.AddDays(-1);
+            idateDateTimePicker.MinDate = new DateTime(2015, 7, 29);
+            idateDateTimePicker.CloseUp += this.UpdateDateLabels;
+            idateDateTimePicker.CloseUp += this.Update_Monthly;
+            idateDateTimePicker.CloseUp += this.Update_30d90d6m1yTable;
+            idateDateTimePicker.CloseUp += this.UpdateMainTable;
 
             // set up date time picker2
-            endDateTimePicker.Value = DateTime.Today;
-            endDateTimePicker.MinDate = new DateTime(2015, 7, 29);
-            endDateTimePicker.CloseUp += this.UpdateDateLabels;
-            endDateTimePicker.CloseUp += this.Update_Monthly;
-            endDateTimePicker.CloseUp += this.Update_DueDate;
-            endDateTimePicker.CloseUp += this.UpdateMainTable;
+            comparisondateDateTimePicker.Value = DateTime.Today;
+            comparisondateDateTimePicker.MinDate = new DateTime(2015, 7, 29);
+            comparisondateDateTimePicker.CloseUp += this.UpdateDateLabels;
+            comparisondateDateTimePicker.CloseUp += this.Update_Monthly;
+            comparisondateDateTimePicker.CloseUp += this.Update_30d90d6m1yTable;
+            comparisondateDateTimePicker.CloseUp += this.UpdateMainTable;
 
             // default radio button for datagridview
             openLinesRadioButton.Checked = true;
@@ -54,13 +53,13 @@ namespace SO_Delivery_Interface
 
             // default radio button for due dates
             partsRadioButton.Checked = true;
-            partsRadioButton.CheckedChanged += this.Update_DueDate;
+            partsRadioButton.CheckedChanged += this.Update_30d90d6m1yTable;
             partsRadioButton.CheckedChanged += this.Update_Monthly;
 
             // Set up datagrid view
             UpdateMainTable(new Object(), new EventArgs());
             linesDataGridView.CellClick += this.Update_Monthly;
-            linesDataGridView.CellClick += this.Update_DueDate;
+            linesDataGridView.CellClick += this.Update_30d90d6m1yTable;
             linesDataGridView.CellClick += this.updateLabels;
             linesDataGridView.Columns[7].DefaultCellStyle.Format = "c";
             linesDataGridView.Columns[8].DefaultCellStyle.Format = "c";
@@ -108,39 +107,45 @@ namespace SO_Delivery_Interface
             iDate_yearDropDown.SelectedIndexChanged += this.Update_Monthly;
 
             // set up quarters_iDate
-            quarter_iDateGridView.Rows.Add(12);
+            monthly_iDateGridView.Rows.Add(12);
             for (int i = 1; i <= 12; i++)
-                quarter_iDateGridView.Rows[i - 1].HeaderCell.Value = UpperCaseFirst(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i).Substring(0, 3));
-            quarter_iDateGridView.RowHeadersDefaultCellStyle.Padding = new Padding(linesDataGridView.RowHeadersWidth);
-            quarter_iDateGridView.RowPostPaint += new DataGridViewRowPostPaintEventHandler(quarter_iDateGridView_RowPostPaint);
+                monthly_iDateGridView.Rows[i - 1].HeaderCell.Value = UpperCaseFirst(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i).Substring(0, 3));
+            monthly_iDateGridView.RowHeadersDefaultCellStyle.Padding = new Padding(linesDataGridView.RowHeadersWidth);
+            monthly_iDateGridView.RowPostPaint += new DataGridViewRowPostPaintEventHandler(quarter_iDateGridView_RowPostPaint);
 
             // set up quarters_current
-            quarter_currentGridView.Rows.Add(12);
+            monthly_currentGridView.Rows.Add(12);
             for (int i = 1; i <= 12; i++)
-                quarter_currentGridView.Rows[i - 1].HeaderCell.Value = UpperCaseFirst(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i).Substring(0, 3));
-            quarter_currentGridView.RowHeadersDefaultCellStyle.Padding = new Padding(linesDataGridView.RowHeadersWidth);
-            quarter_currentGridView.RowPostPaint += new DataGridViewRowPostPaintEventHandler(quarter_currentGridView_RowPostPaint);
-            quarter_currentGridView.Rows[DateTime.Now.Month - 1].Selected = true;
+                monthly_currentGridView.Rows[i - 1].HeaderCell.Value = UpperCaseFirst(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i).Substring(0, 3));
+            monthly_currentGridView.RowHeadersDefaultCellStyle.Padding = new Padding(linesDataGridView.RowHeadersWidth);
+            monthly_currentGridView.RowPostPaint += new DataGridViewRowPostPaintEventHandler(quarter_currentGridView_RowPostPaint);
+            monthly_currentGridView.Rows[DateTime.Now.Month - 1].Selected = true;
 
             // set up date
-            currentDateLabel.Text = endDateTimePicker.Value.ToShortDateString();
-            date2Label.Text = endDateTimePicker.Value.ToShortDateString();
+            currentDateLabel.Text = comparisondateDateTimePicker.Value.ToShortDateString();
+            date2Label.Text = comparisondateDateTimePicker.Value.ToShortDateString();
 
             // set up iDate
-            iDateLabel.Text = startDateTimePicker.Value.ToShortDateString();
-            date1Label.Text = startDateTimePicker.Value.ToShortDateString();
+            iDateLabel.Text = idateDateTimePicker.Value.ToShortDateString();
+            date1Label.Text = idateDateTimePicker.Value.ToShortDateString();
 
             // set up firm checkbox
-            firmCheckBox.CheckedChanged += this.Update_Monthly;
+            firmCostCheckBox.Checked = true;
+            firmCostCheckBox.CheckedChanged += this.Update_Monthly;
+            firmCostCheckBox.CheckedChanged += this.Update_30d90d6m1yTable;
 
             // set up forecast checkbox
-            forecastCheckBox.CheckedChanged += this.Update_Monthly;
+            forecastCostCheckBox.Checked = true;
+            forecastCostCheckBox.CheckedChanged += this.Update_Monthly;
+            forecastCostCheckBox.CheckedChanged += this.Update_30d90d6m1yTable;
 
             // set up total checkbox
-            shippedCheckBox.CheckedChanged += this.Update_Monthly;
+            shippedCostCheckBox.CheckedChanged += this.Update_Monthly;
+            shippedCostCheckBox.CheckedChanged += this.Update_30d90d6m1yTable;
 
             // set up selectAll checkbox
-            selectAllCheckBox.CheckedChanged += this.Update_Monthly;
+            selectAllCostCheckBox.CheckedChanged += this.Update_Monthly;
+            selectAllCostCheckBox.CheckedChanged += this.Update_30d90d6m1yTable;
 
             // set up addutton
             addButton.Click += this.UpdateMainTable;
@@ -172,19 +177,19 @@ namespace SO_Delivery_Interface
                                     "WHERE Status NOT IN ('Removed', 'Shipped', 'Closed') AND ( " + (customers.Count == 0 ? "1 = 1" : "1= 0") + " OR Customer IN ('" + string.Join("','", customers.ToArray()) + "')) AND ( " + (parts.Count == 0 ? "1 = 1" : "1= 0") + " OR Material IN ('" + string.Join("','", parts.ToArray()) + "')) AND CONVERT(DATETIME, idate) =\n" +
                                         "\t(SELECT CONVERT(DATETIME,MAX(InnerT.idate))\n" +
                                         "\tFROM ATIDelivery.dbo.Delivery_Lines AS InnerT\n" +
-                                        "\tWHERE InnerT.SO_Detail = OutterT.SO_Detail AND CONVERT(DATE,InnerT.idate) <= CONVERT(DATE, '" + startDateTimePicker.Value.ToShortDateString() + "'))\n" +
+                                        "\tWHERE InnerT.SO_Detail = OutterT.SO_Detail AND CONVERT(DATE,InnerT.idate) <= CONVERT(DATE, '" + idateDateTimePicker.Value.ToShortDateString() + "'))\n" +
                                     "ORDER BY Promised_Date, SO_Line;";
                     con.Open();
 
                     OdbcCommand com = new OdbcCommand(query, con);
                     try
                     {
-                        OdbcDataReader read = com.ExecuteReader();
+                        OdbcDataReader reader = com.ExecuteReader();
 
                         DataSet ds = new DataSet();
                         DataTable dt = new DataTable();
                         ds.Tables.Add(dt);
-                        ds.Load(read, LoadOption.PreserveChanges, ds.Tables[0]);
+                        ds.Load(reader, LoadOption.PreserveChanges, ds.Tables[0]);
 
                         linesDataGridView.DataSource = ds.Tables[0];
                         linesDataGridView.Columns[12].Visible = false;
@@ -214,7 +219,7 @@ namespace SO_Delivery_Interface
                     // this query returns all of the SO lines
                     string query = "SELECT Sales_Order AS 'Sales Order', SO_Line AS 'SO Line', Customer, Material, Customer_PO AS 'Customer PO', Order_Qty AS 'Order Qty', Promised_Date AS 'Promised Date', Unit_Price AS 'Unit Price', Total_Price AS 'Total Price', Status, Last_Updated AS 'Last Updated', idate, Rev, Description, pk, SO_Detail\n" +
                                     "FROM ATIDelivery.dbo.Delivery_Lines AS OutterT\n" +
-                                    "WHERE  idate >= '" + startDateTimePicker.Value.ToShortDateString() + "' AND idate < '" + startDateTimePicker.Value.AddDays(1).ToShortDateString() + "' AND ( " + (customers.Count == 0 ? "1 = 1" : "1= 0") + " OR Customer IN ('" + string.Join("','", customers.ToArray()) + "')) AND ( " + (parts.Count == 0 ? "1 = 1" : "1= 0") + " OR Material IN ('" + string.Join("','", parts.ToArray()) + "'))\n" +
+                                    "WHERE  idate >= '" + idateDateTimePicker.Value.ToShortDateString() + "' AND idate < '" + idateDateTimePicker.Value.AddDays(1).ToShortDateString() + "' AND ( " + (customers.Count == 0 ? "1 = 1" : "1= 0") + " OR Customer IN ('" + string.Join("','", customers.ToArray()) + "')) AND ( " + (parts.Count == 0 ? "1 = 1" : "1= 0") + " OR Material IN ('" + string.Join("','", parts.ToArray()) + "'))\n" +
                                     "ORDER BY Promised_Date, SO_Line;\n";
                     con.Open();
 
@@ -228,7 +233,7 @@ namespace SO_Delivery_Interface
                     ds.Load(reader, LoadOption.PreserveChanges, ds.Tables[0]);
 
                     linesDataGridView.DataSource = ds.Tables[0];
-                    
+
                     linesDataGridView.Columns[12].Visible = false;
                     linesDataGridView.Columns[13].Visible = false;
                     linesDataGridView.Columns[14].Visible = false;
@@ -252,9 +257,9 @@ namespace SO_Delivery_Interface
                                 "\tCASE when readT.SO_Detail = compareT.SO_Detail THEN 1 ELSE 0 END AS 'SO_Detail changed'\n" +
                           "FROM ATIDelivery.dbo.Delivery_Lines AS readT\n" +
                           "LEFT JOIN\n" +
-                                "\t(SELECT * FROM ATIDelivery.dbo.Delivery_Lines AS compareT2 WHERE compareT2.idate = (SELECT MAX(innerT.idate) FROM ATIDelivery.dbo.Delivery_Lines AS innerT WHERE  innerT.SO_Detail = compareT2.SO_Detail AND innerT.idate < CONVERT(DATE, '" + startDateTimePicker.Value.ToShortDateString() + "'))) AS compareT\n" +
+                                "\t(SELECT * FROM ATIDelivery.dbo.Delivery_Lines AS compareT2 WHERE compareT2.idate = (SELECT MAX(innerT.idate) FROM ATIDelivery.dbo.Delivery_Lines AS innerT WHERE  innerT.SO_Detail = compareT2.SO_Detail AND innerT.idate < CONVERT(DATE, '" + idateDateTimePicker.Value.ToShortDateString() + "'))) AS compareT\n" +
                           "ON compareT.SO_Detail = readT.SO_Detail\n" +
-                          "WHERE  readT.idate >= '" + startDateTimePicker.Value.ToShortDateString() + "' AND readT.idate < '" + startDateTimePicker.Value.AddDays(1).ToShortDateString() + "'  AND ( " + (customers.Count == 0 ? "1 = 1" : "1= 0") + " OR readT.Customer IN ('" + string.Join("','", customers.ToArray()) + "')) AND ( " + (parts.Count == 0 ? "1 = 1" : "1= 0") + " OR readT.Material IN ('" + string.Join("','", parts.ToArray()) + "'))\n" +
+                          "WHERE  readT.idate >= '" + idateDateTimePicker.Value.ToShortDateString() + "' AND readT.idate < '" + idateDateTimePicker.Value.AddDays(1).ToShortDateString() + "'  AND ( " + (customers.Count == 0 ? "1 = 1" : "1= 0") + " OR readT.Customer IN ('" + string.Join("','", customers.ToArray()) + "')) AND ( " + (parts.Count == 0 ? "1 = 1" : "1= 0") + " OR readT.Material IN ('" + string.Join("','", parts.ToArray()) + "'))\n" +
                           "ORDER BY readT.Promised_Date, readT.SO_Line\n";
 
                     com = new OdbcCommand(query, con);
@@ -362,10 +367,10 @@ namespace SO_Delivery_Interface
 
         private void UpdateDateLabels(object sender, EventArgs e)
         {
-            currentDateLabel.Text = endDateTimePicker.Value.ToShortDateString();
-            iDateLabel.Text = startDateTimePicker.Value.ToShortDateString();
-            date1Label.Text = startDateTimePicker.Value.ToShortDateString();
-            date2Label.Text = endDateTimePicker.Value.ToShortDateString();
+            currentDateLabel.Text = comparisondateDateTimePicker.Value.ToShortDateString();
+            iDateLabel.Text = idateDateTimePicker.Value.ToShortDateString();
+            date1Label.Text = idateDateTimePicker.Value.ToShortDateString();
+            date2Label.Text = comparisondateDateTimePicker.Value.ToShortDateString();
         }
 
         void dataGridView_iDate_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -381,22 +386,22 @@ namespace SO_Delivery_Interface
 
         void quarter_iDateGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            object o = quarter_iDateGridView.Rows[e.RowIndex].HeaderCell.Value;
+            object o = monthly_iDateGridView.Rows[e.RowIndex].HeaderCell.Value;
 
             e.Graphics.DrawString(
                 o != null ? o.ToString() : "",
-                quarter_iDateGridView.Font,
+                monthly_iDateGridView.Font,
                 Brushes.Black,
                 new PointF((float)e.RowBounds.Left + 2, (float)e.RowBounds.Top + 4));
         }
 
         void quarter_currentGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            object o = quarter_currentGridView.Rows[e.RowIndex].HeaderCell.Value;
+            object o = monthly_currentGridView.Rows[e.RowIndex].HeaderCell.Value;
 
             e.Graphics.DrawString(
                 o != null ? o.ToString() : "",
-                quarter_currentGridView.Font,
+                monthly_currentGridView.Font,
                 Brushes.Black,
                 new PointF((float)e.RowBounds.Left + 2, (float)e.RowBounds.Top + 4));
         }
@@ -428,7 +433,7 @@ namespace SO_Delivery_Interface
             customerLabel.Text = linesDataGridView.Rows[rowIndex].Cells[2].Value.ToString();
         }
 
-        private void Update_DueDate(object sender, EventArgs e)
+        private void Update_30d90d6m1yTable(object sender, EventArgs e)
         {
             if (linesDataGridView.Rows.Count == 0)
                 return;
@@ -454,83 +459,138 @@ namespace SO_Delivery_Interface
             {
                 // Open by iDate
                 string query =
-                    "SELECT SUM(Order_Qty) " +
-                                    "FROM ATIDelivery.dbo.Delivery_Lines AS OutterT " +
-                                    "WHERE Status NOT IN ('Removed', 'Shipped', 'Closed') AND SO_Line NOT IN ('LAIR', 'FAIR', 'NREC', 'BTS') AND " + filter + " AND CONVERT(DATETIME, idate) = " +
-                                        "(SELECT CONVERT(DATETIME, MAX(InnerT.idate)) " +
-                                        "FROM ATIDelivery.dbo.Delivery_Lines AS InnerT " +
-                                        "WHERE InnerT.SO_Detail = OutterT.SO_Detail AND CONVERT(DATE,InnerT.idate) <= CONVERT(DATE, '" + startDateTimePicker.Value.ToShortDateString() + "'));";
+                    "SELECT SUM(Order_Qty)\n" +
+                    "FROM ATIDelivery.dbo.Delivery_Lines AS OutterT\n" +
+                    "WHERE Status NOT IN ('Removed', 'Shipped', 'Closed') AND SO_Line NOT IN ('LAIR', 'FAIR', 'NREC', 'BTS') AND " + filter + " AND CONVERT(DATETIME, idate) =\n" +
+                        "\t(SELECT CONVERT(DATETIME, MAX(InnerT.idate))\n" +
+                        "\tFROM ATIDelivery.dbo.Delivery_Lines AS InnerT\n" +
+                        "\tWHERE InnerT.SO_Detail = OutterT.SO_Detail AND CONVERT(DATE,InnerT.idate) <= CONVERT(DATE, '" + idateDateTimePicker.Value.ToShortDateString() + "'));";
 
                 con.Open();
 
                 OdbcCommand com = new OdbcCommand(query, con);
-                OdbcDataReader read = com.ExecuteReader();
-                read.Read();
-                openTotal_idateLabel.Text = read.IsDBNull(0) ? "0" : read.GetDouble(0).ToString();
+                OdbcDataReader reader = com.ExecuteReader();
+                reader.Read();
+                piecesDue_idateLabel.Text = reader.IsDBNull(0) ? "0" : reader.GetDouble(0).ToString();
 
-                // Open total
+                // Open total at comparison date time picker
                 query =
-                    "SELECT SUM(Order_Qty) " +
-                                    "FROM ATIDelivery.dbo.Delivery_Lines AS OutterT " +
-                                    "WHERE Status NOT IN ('Removed', 'Shipped', 'Closed') AND SO_Line NOT IN ('LAIR', 'FAIR', 'NREC', 'BTS') AND " + filter + " AND CONVERT(DATETIME, idate) = " +
-                                        "(SELECT CONVERT(DATETIME, MAX(InnerT.idate)) " +
-                                        "FROM ATIDelivery.dbo.Delivery_Lines AS InnerT " +
-                                        "WHERE InnerT.SO_Detail = OutterT.SO_Detail AND CONVERT(DATE,InnerT.idate) <= CONVERT(DATE, '" + endDateTimePicker.Value.ToShortDateString() + "'));";
+                    "SELECT SUM(Order_Qty)\n" +
+                    "FROM ATIDelivery.dbo.Delivery_Lines AS OutterT\n" +
+                    "WHERE Status NOT IN ('Removed', 'Shipped', 'Closed') AND SO_Line NOT IN ('LAIR', 'FAIR', 'NREC', 'BTS') AND " + filter + " AND CONVERT(DATETIME, idate) = " +
+                        "(SELECT CONVERT(DATETIME, MAX(InnerT.idate)) " +
+                        "FROM ATIDelivery.dbo.Delivery_Lines AS InnerT " +
+                        "WHERE InnerT.SO_Detail = OutterT.SO_Detail AND CONVERT(DATE,InnerT.idate) <= CONVERT(DATE, '" + comparisondateDateTimePicker.Value.ToShortDateString() + "'));";
 
 
                 com = new OdbcCommand(query, con);
-                read = com.ExecuteReader();
-                read.Read();
-                openTotal_currentLabel.Text = read.IsDBNull(0) ? "0" : read.GetDouble(0).ToString();
+                reader = com.ExecuteReader();
+                reader.Read();
+                piecesDue_currentLabel.Text = reader.IsDBNull(0) ? "0" : reader.GetDouble(0).ToString();
 
+                //
+                //==============================DATE 1===========================
+                //
+                DateTime[] keyDates_picker1 = { idateDateTimePicker.Value, idateDateTimePicker.Value.AddDays(30), idateDateTimePicker.Value.AddDays(90), idateDateTimePicker.Value.AddMonths(6), idateDateTimePicker.Value.AddYears(1) };
+                string[] statuses = { "('Open')", "('Hold')" };
 
-                DateTime[] keyDates_picker1 = { startDateTimePicker.Value, startDateTimePicker.Value.AddDays(30), startDateTimePicker.Value.AddDays(90), startDateTimePicker.Value.AddMonths(6), startDateTimePicker.Value.AddYears(1) };
-                string[] statuses = { "('Hold')", "('Open')" };
-
-
-                // START OF REPETITITITITIONS======================================================
+                                //
+                // Calculate firm and forecast counts for datagridview #1
+                //
                 string selectQuery = string.Empty;
                 for (int i = 0; i < keyDates_picker1.Length; i++)
                     for (int j = 0; j < statuses.Length; j++)
                     {
-                        selectQuery += "SUM(CASE WHEN (Status IN " + statuses[j] + " AND Promised_Date <= '" + keyDates_picker1[i].ToShortDateString() + "') THEN Order_Qty ELSE 0 END)";
-                        if (j != statuses.Length - 1 || i != keyDates_picker1.Length - 1)
-                            selectQuery += ", ";
+                        // PD field does not include the current date aka '<' NOT '<='
+                        if (i == 0)
+                        {
+                            selectQuery += "\tSUM(CASE WHEN (Status IN " + statuses[j] + " AND Promised_Date < '" + keyDates_picker1[i].ToShortDateString() + "') THEN Order_Qty ELSE 0 END),\n";
+                            selectQuery += "\tSUM(CASE WHEN (Status IN " + statuses[j] + " AND Promised_Date < '" + keyDates_picker1[i].ToShortDateString() + "') THEN Total_Price ELSE 0 END)";
+                        }
                         else
-                            selectQuery += " ";
+                        {
+                            selectQuery += "\tSUM(CASE WHEN (Status IN " + statuses[j] + " AND Promised_Date <= '" + keyDates_picker1[i].ToShortDateString() + "') THEN Order_Qty ELSE 0 END),\n";
+                            selectQuery += "\tSUM(CASE WHEN (Status IN " + statuses[j] + " AND Promised_Date <= '" + keyDates_picker1[i].ToShortDateString() + "') THEN Total_Price ELSE 0 END)";
+                        }
+                        // make sure that last row doesn't have an extra comma
+                        if (j != statuses.Length - 1 || i != keyDates_picker1.Length - 1)
+                            selectQuery += ",\n";
+                        else
+                            selectQuery += "\n";
                     }
 
                 query =
-                    "SELECT " + selectQuery +
-                                    "FROM ATIDelivery.dbo.Delivery_Lines AS OutterT " +
-                                    "WHERE SO_Line NOT IN ('LAIR', 'FAIR', 'NREC', 'BTS') AND " + filter + " AND CONVERT(DATETIME, idate) = " +
-                                        "(SELECT CONVERT(DATETIME, MAX(InnerT.idate)) " +
-                                        "FROM ATIDelivery.dbo.Delivery_Lines AS InnerT " +
-                                        "WHERE InnerT.SO_Detail = OutterT.SO_Detail AND CONVERT(DATE,InnerT.idate) <= CONVERT(DATE, '" + startDateTimePicker.Value.ToShortDateString() + "'));";
+                    "SELECT\n" + selectQuery +
+                                    "FROM ATIDelivery.dbo.Delivery_Lines AS OutterT\n" +
+                                    "WHERE SO_Line NOT IN ('LAIR', 'FAIR', 'NREC', 'BTS') AND " + filter + " AND CONVERT(DATETIME, idate) =\n" +
+                                        "\t(SELECT CONVERT(DATETIME, MAX(InnerT.idate))\n" +
+                                        "\tFROM ATIDelivery.dbo.Delivery_Lines AS InnerT\n" +
+                                        "\tWHERE InnerT.SO_Detail = OutterT.SO_Detail AND CONVERT(DATE,InnerT.idate) <= CONVERT(DATE, '" + idateDateTimePicker.Value.ToShortDateString() + "'));\n";
+
+                // the costs for pd, 30d, 6m, 1y will be stored in this variable
+                // this cost makes use of the filters that the monthly tables use to calculate cost
+                decimal[] totalCosts = new decimal[5];
+                // initialize to 0
+                for (int i = 0; i < totalCosts.Length; i++)
+                    totalCosts[i] = 0;
+                Boolean[] moneyFilters = { firmCostCheckBox.Checked, forecastCostCheckBox.Checked, shippedCostCheckBox.Checked }; // this filters tell you what costs to include
 
                 com = new OdbcCommand(query, con);
-                read = com.ExecuteReader();
-                read.Read();
-                for (int i = 0; i < keyDates_picker1.Length; i++)
-                    for (int j = 0; j < statuses.Length; j++)
-                    {
-                        double orderQty = read.IsDBNull(i * statuses.Length + j) ? 0 : read.GetDouble(i * statuses.Length + j);
-                        dataGridView_iDate.Rows[i].Cells[j].Value = orderQty;
-                        if (orderQty > 0 && i == 0)
-                            dataGridView_iDate.Rows[i].Cells[j].Style = style;
-                        else
-                            dataGridView_iDate.Rows[i].Cells[j].Style = dataGridView_iDate.Columns[j].DefaultCellStyle;
-                    }
-                // initialize data
-                dataGridView_iDate.Rows[0].Cells[2].Value = 0;
-                dataGridView_iDate.Rows[1].Cells[2].Value = 0;
-                dataGridView_iDate.Rows[2].Cells[2].Value = 0;
-                dataGridView_iDate.Rows[3].Cells[2].Value = 0;
-                dataGridView_iDate.Rows[4].Cells[2].Value = 0;
+                reader = com.ExecuteReader();
+                reader.Read();
+                double orderQty;
 
+                for (int status_index = 0; status_index < 2; status_index++)
+                {
+                    for (int date_index = 0; date_index < keyDates_picker1.Length; date_index++)
+                    {
+                        orderQty = reader.IsDBNull((date_index * 2 + status_index) * 2) ? 0 : reader.GetDouble((date_index * 2 + status_index) * 2);
+                        dataGridView_iDate.Rows[date_index].Cells[status_index].Value = orderQty;
+                        totalCosts[date_index] += !reader.IsDBNull((date_index * 2 + status_index) * 2 + 1) && moneyFilters[status_index] ? reader.GetDecimal((date_index * 2 + status_index) * 2 + 1) : 0;
+                        if (orderQty > 0 && date_index == 0)
+                            dataGridView_iDate.Rows[date_index].Cells[status_index].Style = style;
+                        else
+                            dataGridView_iDate.Rows[date_index].Cells[status_index].Style = dataGridView_iDate.Columns[status_index].DefaultCellStyle;
+                    }
+                }
+
+                //
+                // Calculate shipping cost for datagridview #1 
+                //
+                DateTime[] shipping_keyDates_picker1 = { idateDateTimePicker.Value, idateDateTimePicker.Value.AddDays(-30), idateDateTimePicker.Value.AddDays(-90), idateDateTimePicker.Value.AddMonths(-6), idateDateTimePicker.Value.AddYears(-1) };
+                selectQuery = string.Empty;
+
+                for (int i = 0; i < keyDates_picker1.Length; i++)
+                {
+                    selectQuery += "\tSUM(CASE WHEN (Status IN ('Shipped') AND idate >= '" + shipping_keyDates_picker1[i].ToShortDateString() + "') THEN Order_Qty ELSE 0 END),\n";
+                    selectQuery += "\tSUM(CASE WHEN (Status IN ('Shipped') AND idate >= '" + shipping_keyDates_picker1[i].ToShortDateString() + "') THEN Total_Price ELSE 0 END)";
+                    if (i != shipping_keyDates_picker1.Length - 1)
+                        selectQuery += ",\n";
+                    else
+                        selectQuery += "\n";
+                }
+
+                query =
+                    "SELECT " + selectQuery + " " +
+                            "FROM ATIDelivery.dbo.Delivery_Lines AS OutterT\n" +
+                            "WHERE SO_Line NOT IN ('LAIR', 'FAIR', 'NREC', 'BTS') AND " + filter + " AND CONVERT(DATETIME, idate) =\n" +
+                                "(SELECT CONVERT(DATETIME, MAX(InnerT.idate))\n" +
+                                "FROM ATIDelivery.dbo.Delivery_Lines AS InnerT\n" +
+                                "WHERE InnerT.SO_Detail = OutterT.SO_Detail AND InnerT.Status = 'Shipped' AND CONVERT(DATE,InnerT.idate) <= CONVERT(DATE, '" + idateDateTimePicker.Value.ToShortDateString() + "'));";
+
+                com = new OdbcCommand(query, con);
+                reader = com.ExecuteReader();
+                reader.Read();
+                for (int i = 0; i < shipping_keyDates_picker1.Length; i++)
+                {
+                    orderQty = reader.IsDBNull(i * 2) ? 0 : reader.GetDouble(i * 2);
+                    // TO_DO: Reivew line
+                    totalCosts[i] += !reader.IsDBNull(i * 2 + 1) && moneyFilters[2] ? reader.GetDecimal(i * 2 + 1) : 0;
+                    dataGridView_iDate.Rows[i].Cells[2].Value = orderQty;
+                }
 
                 // iDate Total pd
-                double total = double.Parse(dataGridView_iDate.Rows[0].Cells[0].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[0].Cells[1].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[0].Cells[2].Value.ToString());
+                double total = double.Parse(dataGridView_iDate.Rows[0].Cells[0].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[0].Cells[1].Value.ToString());
                 dataGridView_iDate.Rows[0].Cells[3].Value = total;
                 if (total > 0)
                     dataGridView_iDate.Rows[0].Cells[3].Style = style;
@@ -538,88 +598,196 @@ namespace SO_Delivery_Interface
                     dataGridView_iDate.Rows[0].Cells[3].Style = dataGridView_iDate.Columns[2].DefaultCellStyle;
 
                 // iDate Total 30d
-                dataGridView_iDate.Rows[1].Cells[3].Value = double.Parse(dataGridView_iDate.Rows[1].Cells[0].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[1].Cells[1].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[1].Cells[2].Value.ToString());
+                dataGridView_iDate.Rows[1].Cells[3].Value = double.Parse(dataGridView_iDate.Rows[1].Cells[0].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[1].Cells[1].Value.ToString());
 
                 // iDate Total 90d
-                dataGridView_iDate.Rows[2].Cells[3].Value = double.Parse(dataGridView_iDate.Rows[2].Cells[0].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[2].Cells[1].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[2].Cells[2].Value.ToString());
+                dataGridView_iDate.Rows[2].Cells[3].Value = double.Parse(dataGridView_iDate.Rows[2].Cells[0].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[2].Cells[1].Value.ToString());
 
                 // iDate Total 6 mo
-                dataGridView_iDate.Rows[3].Cells[3].Value = double.Parse(dataGridView_iDate.Rows[3].Cells[0].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[3].Cells[1].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[3].Cells[2].Value.ToString());
-
+                dataGridView_iDate.Rows[3].Cells[3].Value = double.Parse(dataGridView_iDate.Rows[3].Cells[0].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[3].Cells[1].Value.ToString());
 
                 // iDate Total 1yr
-                dataGridView_iDate.Rows[4].Cells[3].Value = double.Parse(dataGridView_iDate.Rows[4].Cells[0].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[4].Cells[1].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[0].Cells[2].Value.ToString());
+                dataGridView_iDate.Rows[4].Cells[3].Value = double.Parse(dataGridView_iDate.Rows[4].Cells[0].Value.ToString()) + double.Parse(dataGridView_iDate.Rows[4].Cells[1].Value.ToString());
 
+
+                // write total cost data to datagridview
+                for (int i = 0; i < totalCosts.Length; i++)
+                    dataGridView_iDate.Rows[i].Cells[4].Value = totalCosts[i];
+
+                dataGridView_iDate.Columns[4].DefaultCellStyle.Format = "c";
 
                 //
-                // ================================================================================================================================
+                //==============================DATE 2===========================
                 //
 
                 // Date2 Firm pd
-                DateTime[] keyDates_picker2 = { endDateTimePicker.Value, endDateTimePicker.Value.AddDays(30), endDateTimePicker.Value.AddDays(90), endDateTimePicker.Value.AddMonths(6), endDateTimePicker.Value.AddYears(1) };
+                DateTime[] keyDates_picker2 = { comparisondateDateTimePicker.Value, comparisondateDateTimePicker.Value.AddDays(30), comparisondateDateTimePicker.Value.AddDays(90), comparisondateDateTimePicker.Value.AddMonths(6), comparisondateDateTimePicker.Value.AddYears(1) };
+
+                //
+                // Calculate firm and forecast counts for datagridview #1
+                //
                 selectQuery = string.Empty;
                 for (int i = 0; i < keyDates_picker2.Length; i++)
                     for (int j = 0; j < statuses.Length; j++)
                     {
-                        selectQuery += "SUM(CASE WHEN (Status IN " + statuses[j] + " AND CONVERT(DATE, Promised_Date) <= CONVERT(DATE,'" + keyDates_picker2[i].ToShortDateString() + "')) THEN Order_Qty ELSE 0 END)";
-                        if (j != statuses.Length - 1 || i != keyDates_picker2.Length - 1)
-                            selectQuery += ", ";
+                        // PD field does not include the current date aka '<' NOT '<='
+                        if (i == 0)
+                        {
+                            selectQuery += "\tSUM(CASE WHEN (Status IN " + statuses[j] + " AND Promised_Date < '" + keyDates_picker2[i].ToShortDateString() + "') THEN Order_Qty ELSE 0 END),\n";
+                            selectQuery += "\tSUM(CASE WHEN (Status IN " + statuses[j] + " AND Promised_Date < '" + keyDates_picker2[i].ToShortDateString() + "') THEN Total_Price ELSE 0 END)";
+                        }
                         else
-                            selectQuery += " ";
+                        {
+                            selectQuery += "\tSUM(CASE WHEN (Status IN " + statuses[j] + " AND Promised_Date <= '" + keyDates_picker2[i].ToShortDateString() + "') THEN Order_Qty ELSE 0 END),\n";
+                            selectQuery += "\tSUM(CASE WHEN (Status IN " + statuses[j] + " AND Promised_Date <= '" + keyDates_picker2[i].ToShortDateString() + "') THEN Total_Price ELSE 0 END)";
+                        }
+                        // make sure that last row doesn't have an extra comma
+                        if (j != statuses.Length - 1 || i != keyDates_picker2.Length - 1)
+                            selectQuery += ",\n";
+                        else
+                            selectQuery += "\n";
                     }
 
                 query =
-                    "SELECT " + selectQuery +
-                                    "FROM ATIDelivery.dbo.Delivery_Lines AS OutterT " +
-                                    "WHERE SO_Line NOT IN ('LAIR', 'FAIR', 'NREC', 'BTS') AND " + filter + " AND CONVERT(DATETIME, idate) = " +
-                                        "(SELECT CONVERT(DATETIME, MAX(InnerT.idate)) " +
-                                        "FROM ATIDelivery.dbo.Delivery_Lines AS InnerT " +
-                                        "WHERE InnerT.SO_Detail = OutterT.SO_Detail AND CONVERT(DATE,InnerT.idate) <= CONVERT(DATE, '" + endDateTimePicker.Value.ToShortDateString() + "'));";
+                    "SELECT\n" + selectQuery +
+                                    "FROM ATIDelivery.dbo.Delivery_Lines AS OutterT\n" +
+                                    "WHERE SO_Line NOT IN ('LAIR', 'FAIR', 'NREC', 'BTS') AND " + filter + " AND CONVERT(DATETIME, idate) =\n" +
+                                        "\t(SELECT CONVERT(DATETIME, MAX(InnerT.idate))\n" +
+                                        "\tFROM ATIDelivery.dbo.Delivery_Lines AS InnerT\n" +
+                                        "\tWHERE InnerT.SO_Detail = OutterT.SO_Detail AND CONVERT(DATE,InnerT.idate) <= CONVERT(DATE, '" + comparisondateDateTimePicker.Value.ToShortDateString() + "'));\n";
+
+                // the costs for pd, 30d, 6m, 1y will be stored in this variable
+                // this cost makes use of the filters that the monthly tables use to calculate cost
+                // initialize to 0
+                for (int i = 0; i < totalCosts.Length; i++)
+                    totalCosts[i] = 0;
 
                 com = new OdbcCommand(query, con);
-                read = com.ExecuteReader();
-                read.Read();
-                for (int i = 0; i < keyDates_picker2.Length; i++)
-                    for (int j = 0; j < statuses.Length; j++)
+                reader = com.ExecuteReader();
+                reader.Read();
+                orderQty = 0;
+
+                for (int status_index = 0; status_index < 2; status_index++)
+                {
+                    for (int date_index = 0; date_index < keyDates_picker2.Length; date_index++)
                     {
-                        double orderQty = read.IsDBNull(i * statuses.Length + j) ? 0 : read.GetDouble(i * statuses.Length + j);
-                        dataGridView_current.Rows[i].Cells[j].Value = orderQty;
-                        if (orderQty > 0 && i == 0)
-                            dataGridView_current.Rows[i].Cells[j].Style = style;
+                        orderQty = reader.IsDBNull((date_index * 2 + status_index) * 2) ? 0 : reader.GetDouble((date_index * 2 + status_index) * 2);
+                        dataGridView_current.Rows[date_index].Cells[status_index].Value = orderQty;
+                        totalCosts[date_index] += !reader.IsDBNull((date_index * 2 + status_index) * 2 + 1) && moneyFilters[status_index] ? reader.GetDecimal((date_index * 2 + status_index) * 2 + 1) : 0;
+                        if (orderQty > 0 && date_index == 0)
+                            dataGridView_current.Rows[date_index].Cells[status_index].Style = style;
                         else
-                            dataGridView_current.Rows[i].Cells[j].Style = dataGridView_current.Columns[j].DefaultCellStyle;
+                            dataGridView_current.Rows[date_index].Cells[status_index].Style = dataGridView_current.Columns[status_index].DefaultCellStyle;
                     }
+                }
 
-                // current Total pd
+                //
+                // Calculate shipping cost for datagridview #1 
+                //
+                DateTime[] shipping_keyDates_picker2 = { comparisondateDateTimePicker.Value, comparisondateDateTimePicker.Value.AddDays(-30), comparisondateDateTimePicker.Value.AddDays(-90), comparisondateDateTimePicker.Value.AddMonths(-6), comparisondateDateTimePicker.Value.AddYears(-1) };
+                selectQuery = string.Empty;
+
+                for (int i = 0; i < keyDates_picker2.Length; i++)
+                {
+                    selectQuery += "\tSUM(CASE WHEN (Status IN ('Shipped') AND idate >= '" + shipping_keyDates_picker2[i].ToShortDateString() + "') THEN Order_Qty ELSE 0 END),\n";
+                    selectQuery += "\tSUM(CASE WHEN (Status IN ('Shipped') AND idate >= '" + shipping_keyDates_picker2[i].ToShortDateString() + "') THEN Total_Price ELSE 0 END)";
+                    if (i != shipping_keyDates_picker2.Length - 1)
+                        selectQuery += ",\n";
+                    else
+                        selectQuery += "\n";
+                }
+
+                query =
+                    "SELECT " + selectQuery + " " +
+                            "FROM ATIDelivery.dbo.Delivery_Lines AS OutterT\n" +
+                            "WHERE SO_Line NOT IN ('LAIR', 'FAIR', 'NREC', 'BTS') AND " + filter + " AND CONVERT(DATETIME, idate) =\n" +
+                                "(SELECT CONVERT(DATETIME, MAX(InnerT.idate))\n" +
+                                "FROM ATIDelivery.dbo.Delivery_Lines AS InnerT\n" +
+                                "WHERE InnerT.SO_Detail = OutterT.SO_Detail AND InnerT.Status = 'Shipped' AND CONVERT(DATE,InnerT.idate) <= CONVERT(DATE, '" + comparisondateDateTimePicker.Value.ToShortDateString() + "'));";
+
+                com = new OdbcCommand(query, con);
+                reader = com.ExecuteReader();
+                reader.Read();
+                for (int i = 0; i < shipping_keyDates_picker2.Length; i++)
+                {
+                    orderQty = reader.IsDBNull(i * 2) ? 0 : reader.GetDouble(i * 2);
+                    // TO_DO: Reivew line
+                    totalCosts[i] += !reader.IsDBNull(i * 2 + 1) && moneyFilters[2] ? reader.GetDecimal(i * 2 + 1) : 0;
+                    dataGridView_current.Rows[i].Cells[2].Value = orderQty;
+                }
+
+                // iDate Total pd
                 total = double.Parse(dataGridView_current.Rows[0].Cells[0].Value.ToString()) + double.Parse(dataGridView_current.Rows[0].Cells[1].Value.ToString());
-                dataGridView_current.Rows[0].Cells[2].Value = total;
+                dataGridView_current.Rows[0].Cells[3].Value = total;
                 if (total > 0)
-                    dataGridView_current.Rows[0].Cells[2].Style = style;
+                    dataGridView_current.Rows[0].Cells[3].Style = style;
                 else
-                    dataGridView_current.Rows[0].Cells[2].Style = dataGridView_current.Columns[2].DefaultCellStyle;
+                    dataGridView_current.Rows[0].Cells[3].Style = dataGridView_current.Columns[2].DefaultCellStyle;
 
-                // current Total 30d
-                dataGridView_current.Rows[1].Cells[2].Value = double.Parse(dataGridView_current.Rows[1].Cells[0].Value.ToString()) + double.Parse(dataGridView_current.Rows[1].Cells[1].Value.ToString());
+                // iDate Total 30d
+                dataGridView_current.Rows[1].Cells[3].Value = double.Parse(dataGridView_current.Rows[1].Cells[0].Value.ToString()) + double.Parse(dataGridView_current.Rows[1].Cells[1].Value.ToString());
 
-                // current Total 90d
-                dataGridView_current.Rows[2].Cells[2].Value = double.Parse(dataGridView_current.Rows[2].Cells[0].Value.ToString()) + double.Parse(dataGridView_current.Rows[2].Cells[1].Value.ToString());
+                // iDate Total 90d
+                dataGridView_current.Rows[2].Cells[3].Value = double.Parse(dataGridView_current.Rows[2].Cells[0].Value.ToString()) + double.Parse(dataGridView_current.Rows[2].Cells[1].Value.ToString());
 
-                // current Total 6 mo
-                dataGridView_current.Rows[3].Cells[2].Value = double.Parse(dataGridView_current.Rows[3].Cells[0].Value.ToString()) + double.Parse(dataGridView_current.Rows[3].Cells[1].Value.ToString());
+                // iDate Total 6 mo
+                dataGridView_current.Rows[3].Cells[3].Value = double.Parse(dataGridView_current.Rows[3].Cells[0].Value.ToString()) + double.Parse(dataGridView_current.Rows[3].Cells[1].Value.ToString());
+
+                // iDate Total 1yr
+                dataGridView_current.Rows[4].Cells[3].Value = double.Parse(dataGridView_current.Rows[4].Cells[0].Value.ToString()) + double.Parse(dataGridView_current.Rows[4].Cells[1].Value.ToString());
 
 
-                // current Total 1yr
-                dataGridView_current.Rows[4].Cells[2].Value = double.Parse(dataGridView_current.Rows[4].Cells[0].Value.ToString()) + double.Parse(dataGridView_current.Rows[4].Cells[1].Value.ToString());
+                // write total cost data to datagridview
+                for (int i = 0; i < totalCosts.Length; i++)
+                    dataGridView_current.Rows[i].Cells[4].Value = totalCosts[i];
+
+                dataGridView_current.Columns[4].DefaultCellStyle.Format = "c";
+
+                //
+                // Calculate total ship between the two dates
+                //
+
+                if (idateDateTimePicker.Value < comparisondateDateTimePicker.Value)
+                {
+
+                    query = "SELECT SUM(CASE WHEN (Status IN ('Shipped') AND CONVERT(DATE,idate) <= CONVERT(DATE, '" + comparisondateDateTimePicker.Value.ToShortDateString() + "') AND CONVERT(DATE, idate) >= CONVERT(DATE,'" + idateDateTimePicker.Value.ToShortDateString() + "')) THEN Order_Qty ELSE 0 END)\n" +
+                            "FROM ATIDelivery.dbo.Delivery_Lines AS OutterT\n" +
+                            "WHERE SO_Line NOT IN ('LAIR', 'FAIR', 'NREC', 'BTS') AND Material = 'CH2151-0016' AND CONVERT(DATETIME, idate) =\n" +
+                                "\t(SELECT CONVERT(DATETIME, MAX(InnerT.idate))\n" +
+                                "\tFROM ATIDelivery.dbo.Delivery_Lines AS InnerT\n" +
+                                "\tWHERE InnerT.SO_Detail = OutterT.SO_Detail AND InnerT.Status = 'Shipped' AND CONVERT(DATE,InnerT.idate) <= CONVERT(DATE, '" + comparisondateDateTimePicker.Value.ToShortDateString() + "'));";
+
+                    com = new OdbcCommand(query, con);
+                    reader = com.ExecuteReader();
+
+                    reader.Read();
+
+                    switch (Type.GetTypeCode(reader.GetFieldType(0)))
+                    {
+                        case TypeCode.Int32:
+                            partsShippedLabel.Text = reader.IsDBNull(0) ? (0).ToString() : reader.GetInt32(0).ToString();
+                            break;
+                        case TypeCode.Double:
+                            partsShippedLabel.Text = reader.IsDBNull(0) ? (0).ToString() : reader.GetDouble(0).ToString();
+                            break;
+                    }
+                }
+                else
+                {
+                    partsShippedLabel.Text = "0";
+                }
             }
         }
 
         private void Update_Monthly(object sender, EventArgs e)
         {
+            // check if there is any lines to pull information off of
             if (iDate_yearDropDown.SelectedItem == null || linesDataGridView.Rows.Count == 0)
                 return;
 
+            // disable all the buttons to avoid the user from stagnating clicks
             linesDataGridView.Enabled = false;
-            startDateTimePicker.Enabled = false;
+            idateDateTimePicker.Enabled = false;
             iDate_yearDropDown.Enabled = false;
             changesRadioButton.Enabled = false;
             openLinesRadioButton.Enabled = false;
@@ -628,17 +796,27 @@ namespace SO_Delivery_Interface
             customerAndPartsRadioButton.Enabled = false;
             ByAllRadioButton.Enabled = false;
             addButton.Enabled = false;
-            firmCheckBox.Enabled = false;
-            shippedCheckBox.Enabled = false;
-            forecastCheckBox.Enabled = false;
-            selectAllCheckBox.Enabled = false;
+            firmCostCheckBox.Enabled = false;
+            shippedCostCheckBox.Enabled = false;
+            forecastCostCheckBox.Enabled = false;
+            selectAllCostCheckBox.Enabled = false;
 
+            // get the part number of the selected row
             string part = linesDataGridView.SelectedRows[0].Cells[3].Value.ToString();
+            // get the selected year
+            // this will decide what set of months we'll be working with
             int year = int.Parse(iDate_yearDropDown.SelectedItem.ToString());
 
+            // the three possible statuses
+            /*
+             * Open -> Firm
+             * Hold -> Forecast
+             * Shipped -> Shipped
+             */
             string[] statuses = { "('Open')", "('Hold')", "('Shipped')" };
-            Boolean[] moneyFilters = { firmCheckBox.Checked, forecastCheckBox.Checked, shippedCheckBox.Checked };
+            Boolean[] moneyFilters = { firmCostCheckBox.Checked, forecastCostCheckBox.Checked, shippedCostCheckBox.Checked };
 
+            // this sets the part number and customer filter vased on the selections of the "Filter By" dropdown
             string filter = string.Empty;
             if (partsRadioButton.Checked)
                 filter = "Material = '" + linesDataGridView.SelectedRows[0].Cells[3].Value.ToString() + "'";
@@ -650,10 +828,11 @@ namespace SO_Delivery_Interface
                 filter = "Material = '" + linesDataGridView.SelectedRows[0].Cells[3].Value.ToString() + "' AND Customer = '" + linesDataGridView.SelectedRows[0].Cells[2].Value.ToString() + "'";
 
             //
-            // IDATE
+            // IDATE - left data gridview of the monthly set
             //
-            decimal[] totalCosts = new decimal[12];
 
+            // this will be used to calculate the cost of the 12 months
+            decimal[] totalCosts = new decimal[12];
 
             using (OdbcConnection con = new OdbcConnection("DSN=" + DSN + ";UID=" + userName + ";PWD=" + password))
             {
@@ -667,8 +846,8 @@ namespace SO_Delivery_Interface
                     for (int i = 1; i <= 12; i++)
                     {
                         dateRangeVar = "Promised_Date";
-                        selectString_Forecast += "SUM(CASE WHEN (Status IN " + statuses[j] + " AND CONVERT(DATE," + dateRangeVar + ") <= CONVERT(DATE, '" + (new DateTime(year, i, DateTime.DaysInMonth(year, i))).ToShortDateString() + "') AND CONVERT(DATE, " + dateRangeVar + ") >= CONVERT(DATE, '" + (new DateTime(year, i, 1)).ToShortDateString() + "')) THEN Order_Qty ELSE 0 END),\n" +
-                                    "SUM(CASE WHEN (Status IN " + statuses[j] + " AND CONVERT(DATE, " + dateRangeVar + ") <= CONVERT(DATE, '" + (new DateTime(year, i, DateTime.DaysInMonth(year, i))).ToShortDateString() + "') AND CONVERT(DATE, " + dateRangeVar + ") >= CONVERT(DATE, '" + (new DateTime(year, i, 1)).ToShortDateString() + "')) THEN Total_Price ELSE 0 END)";
+                        selectString_Forecast += "\tSUM(CASE WHEN (Status IN " + statuses[j] + " AND CONVERT(DATE," + dateRangeVar + ") <= CONVERT(DATE, '" + (new DateTime(year, i, DateTime.DaysInMonth(year, i))).ToShortDateString() + "') AND CONVERT(DATE, " + dateRangeVar + ") >= CONVERT(DATE, '" + (new DateTime(year, i, 1)).ToShortDateString() + "')) THEN Order_Qty ELSE 0 END),\n" +
+                                                 "\tSUM(CASE WHEN (Status IN " + statuses[j] + " AND CONVERT(DATE, " + dateRangeVar + ") <= CONVERT(DATE, '" + (new DateTime(year, i, DateTime.DaysInMonth(year, i))).ToShortDateString() + "') AND CONVERT(DATE, " + dateRangeVar + ") >= CONVERT(DATE, '" + (new DateTime(year, i, 1)).ToShortDateString() + "')) THEN Total_Price ELSE 0 END)";
                         if (!(j == 1 && i == 12))
                             selectString_Forecast += ",\n";
                         else
@@ -676,24 +855,25 @@ namespace SO_Delivery_Interface
                     }
 
                 string query =
-                    "SELECT " + selectString_Forecast + " " +
+                    "SELECT\n" + selectString_Forecast +
                             "FROM ATIDelivery.dbo.Delivery_Lines AS OutterT\n" +
                             "WHERE SO_Line NOT IN ('LAIR', 'FAIR', 'NREC', 'BTS') AND " + filter + " AND CONVERT(DATETIME, idate) =\n" +
                                 "(SELECT CONVERT(DATETIME, MAX(InnerT.idate))\n" +
                                 "FROM ATIDelivery.dbo.Delivery_Lines AS InnerT\n" +
-                                "WHERE InnerT.SO_Detail = OutterT.SO_Detail AND CONVERT(DATE,InnerT.idate) <= CONVERT(DATE, '" + startDateTimePicker.Value.ToShortDateString() + "'));\n";
+                                "WHERE InnerT.SO_Detail = OutterT.SO_Detail AND CONVERT(DATE,InnerT.idate) <= CONVERT(DATE, '" + idateDateTimePicker.Value.ToShortDateString() + "'));\n";
                 OdbcCommand com = new OdbcCommand(query, con);
-                OdbcDataReader read = com.ExecuteReader();
+                OdbcDataReader reader = com.ExecuteReader();
 
-                read.Read();
+                reader.Read();
+                double orderQty;
                 for (int j = 0; j < 2; j++)
                     for (int i = 0; i < 12; i++)
                     {
-                        double orderQty = read.IsDBNull((j * 12 + i) * 2) ? 0 : read.GetDouble((j * 12 + i) * 2);
-                        quarter_iDateGridView.Rows[i].Cells[j].Value = orderQty;
-                        totalCosts[i] += !read.IsDBNull((j * 12 + i) * 2 + 1) && moneyFilters[j] ? read.GetDecimal((j * 12 + i) * 2 + 1) : 0;
+                        orderQty = reader.IsDBNull((j * 12 + i) * 2) ? 0 : reader.GetDouble((j * 12 + i) * 2);
+                        monthly_iDateGridView.Rows[i].Cells[j].Value = orderQty;
+                        totalCosts[i] += !reader.IsDBNull((j * 12 + i) * 2 + 1) && moneyFilters[j] ? reader.GetDecimal((j * 12 + i) * 2 + 1) : 0;
                     }
-                read.Read();
+                reader.Read();
 
                 //==============SHIPPING==========================
 
@@ -716,20 +896,20 @@ namespace SO_Delivery_Interface
                             "WHERE SO_Line NOT IN ('LAIR', 'FAIR', 'NREC', 'BTS') AND " + filter + " AND CONVERT(DATETIME, idate) =\n" +
                                 "(SELECT CONVERT(DATETIME, MAX(InnerT.idate))\n" +
                                 "FROM ATIDelivery.dbo.Delivery_Lines AS InnerT\n" +
-                                "WHERE InnerT.SO_Detail = OutterT.SO_Detail AND InnerT.Status = 'Shipped' AND CONVERT(DATE,InnerT.idate) <= CONVERT(DATE, '" + startDateTimePicker.Value.ToShortDateString() + "'));";
+                                "WHERE InnerT.SO_Detail = OutterT.SO_Detail AND InnerT.Status = 'Shipped' AND CONVERT(DATE,InnerT.idate) <= CONVERT(DATE, '" + idateDateTimePicker.Value.ToShortDateString() + "'));";
                 com = new OdbcCommand(query, con);
-                read = com.ExecuteReader();
+                reader = com.ExecuteReader();
 
-                read.Read();
+                reader.Read();
                 for (int j = 2; j < 3; j++)
                     for (int i = 0; i < 12; i++)
                     {
-                        double orderQty = read.IsDBNull(i * 2) ? 0 : read.GetDouble(i * 2);
-                        quarter_iDateGridView.Rows[i].Cells[j].Value = orderQty;
-                        totalCosts[i] += !read.IsDBNull(i * 2 + 1) && moneyFilters[j] ? read.GetDecimal(i * 2 + 1) : 0;
+                        orderQty = reader.IsDBNull(i * 2) ? 0 : reader.GetDouble(i * 2);
+                        monthly_iDateGridView.Rows[i].Cells[j].Value = orderQty;
+                        totalCosts[i] += !reader.IsDBNull(i * 2 + 1) && moneyFilters[j] ? reader.GetDecimal(i * 2 + 1) : 0;
                     }
 
-                read.Read();
+                reader.Read();
 
                 // =========================================
 
@@ -747,18 +927,18 @@ namespace SO_Delivery_Interface
                         "WHERE " + filter + " AND Status <> 'Removed' AND SO_Line NOT IN ('LAIR', 'FAIR', 'NREC', 'BTS') AND CONVERT(DATETIME, idate) =\n" +
                             "\t(SELECT CONVERT(DATETIME, MAX(inTable.idate))\n" +
                             "\tFROM ATIDelivery.dbo.Delivery_Lines AS inTable\n" +
-                            "\tWHERE outT.SO_Detail = inTable.SO_Detail AND CONVERT(DATE, idate) <= CONVERT(DATE, '" + startDateTimePicker.Value.ToShortDateString() + "')); ";
+                            "\tWHERE outT.SO_Detail = inTable.SO_Detail AND CONVERT(DATE, idate) <= CONVERT(DATE, '" + idateDateTimePicker.Value.ToShortDateString() + "')); ";
                 com = new OdbcCommand(query, con);
-                read = com.ExecuteReader();
+                reader = com.ExecuteReader();
 
-                read.Read();
+                reader.Read();
                 for (int i = 0; i < 12; i++)
                 {
-                    quarter_iDateGridView.Rows[i].Cells[4].Value = totalCosts[i];
-                    quarter_iDateGridView.Rows[i].Cells[3].Value = read.IsDBNull(i) ? 0 : read.GetDouble(i);
+                    monthly_iDateGridView.Rows[i].Cells[4].Value = totalCosts[i];
+                    monthly_iDateGridView.Rows[i].Cells[3].Value = reader.IsDBNull(i) ? 0 : reader.GetDouble(i);
                 }
-                read.Read();
-                quarter_iDateGridView.Columns[4].DefaultCellStyle.Format = "c";
+                reader.Read();
+                monthly_iDateGridView.Columns[4].DefaultCellStyle.Format = "c";
 
                 //===================================================================================================================================
                 //===================================================================================================================================
@@ -774,20 +954,20 @@ namespace SO_Delivery_Interface
                             "WHERE SO_Line NOT IN ('LAIR', 'FAIR', 'NREC', 'BTS') AND " + filter + " AND CONVERT(DATETIME, idate) = " +
                                                 "(SELECT CONVERT(DATETIME, MAX(InnerT.idate)) " +
                                                 "FROM ATIDelivery.dbo.Delivery_Lines AS InnerT " +
-                                                "WHERE InnerT.SO_Detail = OutterT.SO_Detail AND CONVERT(DATE,InnerT.idate) <= CONVERT(DATE, '" + endDateTimePicker.Value.ToShortDateString() + "'));";
+                                                "WHERE InnerT.SO_Detail = OutterT.SO_Detail AND CONVERT(DATE,InnerT.idate) <= CONVERT(DATE, '" + comparisondateDateTimePicker.Value.ToShortDateString() + "'));";
 
 
                 com = new OdbcCommand(query, con);
-                read = com.ExecuteReader();
-                read.Read();
+                reader = com.ExecuteReader();
+                reader.Read();
                 for (int j = 0; j < 2; j++)
                     for (int i = 0; i < 12; i++)
                     {
-                        double orderQty = read.IsDBNull((j * 12 + i) * 2) ? 0 : read.GetDouble((j * 12 + i) * 2);
-                        quarter_currentGridView.Rows[i].Cells[j].Value = orderQty;
-                        totalCosts[i] += !read.IsDBNull((j * 12 + i) * 2 + 1) && moneyFilters[j] ? read.GetDecimal((j * 12 + i) * 2 + 1) : 0;
+                        orderQty = reader.IsDBNull((j * 12 + i) * 2) ? 0 : reader.GetDouble((j * 12 + i) * 2);
+                        monthly_currentGridView.Rows[i].Cells[j].Value = orderQty;
+                        totalCosts[i] += !reader.IsDBNull((j * 12 + i) * 2 + 1) && moneyFilters[j] ? reader.GetDecimal((j * 12 + i) * 2 + 1) : 0;
                     }
-                read.Read();
+                reader.Read();
 
 
                 // =========================================================
@@ -798,20 +978,20 @@ namespace SO_Delivery_Interface
                             "WHERE SO_Line NOT IN ('LAIR', 'FAIR', 'NREC', 'BTS') AND " + filter + " AND CONVERT(DATETIME, idate) = " +
                                                 "(SELECT CONVERT(DATETIME, MAX(InnerT.idate)) " +
                                                 "FROM ATIDelivery.dbo.Delivery_Lines AS InnerT " +
-                                                "WHERE InnerT.SO_Detail = OutterT.SO_Detail AND InnerT.Status = 'Shipped' AND CONVERT(DATE,InnerT.idate) <= CONVERT(DATE, '" + endDateTimePicker.Value.ToShortDateString() + "'));";
+                                                "WHERE InnerT.SO_Detail = OutterT.SO_Detail AND InnerT.Status = 'Shipped' AND CONVERT(DATE,InnerT.idate) <= CONVERT(DATE, '" + comparisondateDateTimePicker.Value.ToShortDateString() + "'));";
 
 
                 com = new OdbcCommand(query, con);
-                read = com.ExecuteReader();
-                read.Read();
+                reader = com.ExecuteReader();
+                reader.Read();
                 for (int j = 2; j < 3; j++)
                     for (int i = 0; i < 12; i++)
                     {
-                        double orderQty = read.IsDBNull(i * 2) ? 0 : read.GetDouble(i * 2);
-                        quarter_currentGridView.Rows[i].Cells[j].Value = orderQty;
-                        totalCosts[i] += !read.IsDBNull(i * 2 + 1) && moneyFilters[j] ? read.GetDecimal(i * 2 + 1) : 0;
+                        orderQty = reader.IsDBNull(i * 2) ? 0 : reader.GetDouble(i * 2);
+                        monthly_currentGridView.Rows[i].Cells[j].Value = orderQty;
+                        totalCosts[i] += !reader.IsDBNull(i * 2 + 1) && moneyFilters[j] ? reader.GetDecimal(i * 2 + 1) : 0;
                     }
-                read.Read();
+                reader.Read();
 
                 //==============================================================================
 
@@ -820,24 +1000,24 @@ namespace SO_Delivery_Interface
                         "WHERE " + filter + " AND Status <> 'Removed' AND SO_Line NOT IN ('LAIR', 'FAIR', 'NREC', 'BTS') AND  CONVERT(DATETIME, idate) =\n" +
                             "\t(SELECT CONVERT(DATETIME, MAX(inTable.idate))\n" +
                             "\tFROM ATIDelivery.dbo.Delivery_Lines AS inTable\n" +
-                            "\tWHERE outT.SO_Detail = inTable.SO_Detail AND CONVERT(DATETIME, idate) <= CONVERT(DATE, '" + endDateTimePicker.Value.ToShortDateString() + "')); ";
+                            "\tWHERE outT.SO_Detail = inTable.SO_Detail AND CONVERT(DATETIME, idate) <= CONVERT(DATE, '" + comparisondateDateTimePicker.Value.ToShortDateString() + "')); ";
                 com = new OdbcCommand(query, con);
-                read = com.ExecuteReader();
+                reader = com.ExecuteReader();
 
-                read.Read();
+                reader.Read();
                 for (int i = 0; i < 12; i++)
                 {
-                    quarter_currentGridView.Rows[i].Cells[4].Value = totalCosts[i];
-                    quarter_currentGridView.Rows[i].Cells[3].Value = read.IsDBNull(i) ? 0 : read.GetDouble(i); ;
+                    monthly_currentGridView.Rows[i].Cells[4].Value = totalCosts[i];
+                    monthly_currentGridView.Rows[i].Cells[3].Value = reader.IsDBNull(i) ? 0 : reader.GetDouble(i); ;
                 }
-                quarter_currentGridView.Columns[4].DefaultCellStyle.Format = "c";
-                read.Read();
+                monthly_currentGridView.Columns[4].DefaultCellStyle.Format = "c";
+                reader.Read();
             }
             // ==========================================================
 
 
             linesDataGridView.Enabled = true;
-            startDateTimePicker.Enabled = true;
+            idateDateTimePicker.Enabled = true;
             iDate_yearDropDown.Enabled = true;
             changesRadioButton.Enabled = true;
             openLinesRadioButton.Enabled = true;
@@ -846,57 +1026,69 @@ namespace SO_Delivery_Interface
             customerAndPartsRadioButton.Enabled = true;
             ByAllRadioButton.Enabled = true;
             addButton.Enabled = true;
-            firmCheckBox.Enabled = true;
-            shippedCheckBox.Enabled = true;
-            forecastCheckBox.Enabled = true;
-            selectAllCheckBox.Enabled = true;
+            firmCostCheckBox.Enabled = true;
+            shippedCostCheckBox.Enabled = true;
+            forecastCostCheckBox.Enabled = true;
+            selectAllCostCheckBox.Enabled = true;
 
         }
 
         private void selectAllCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            this.firmCheckBox.CheckedChanged -= this.firmCheckBox_CheckedChanged;
-            this.firmCheckBox.CheckedChanged -= this.Update_Monthly;
-            this.forecastCheckBox.CheckedChanged -= this.forecastCheckBox_CheckedChanged;
-            this.forecastCheckBox.CheckedChanged -= this.Update_Monthly;
-            this.shippedCheckBox.CheckedChanged -= this.totalCheckBox_CheckedChanged;
-            this.shippedCheckBox.CheckedChanged -= this.Update_Monthly;
-            firmCheckBox.Checked = true;
-            forecastCheckBox.Checked = true;
-            shippedCheckBox.Checked = true;
-            this.firmCheckBox.CheckedChanged += this.firmCheckBox_CheckedChanged;
-            this.firmCheckBox.CheckedChanged += this.Update_Monthly;
-            this.forecastCheckBox.CheckedChanged += this.forecastCheckBox_CheckedChanged;
-            this.forecastCheckBox.CheckedChanged += this.Update_Monthly;
-            this.shippedCheckBox.CheckedChanged += this.totalCheckBox_CheckedChanged;
-            this.shippedCheckBox.CheckedChanged += this.Update_Monthly;
+            this.firmCostCheckBox.CheckedChanged -= this.firmCheckBox_CheckedChanged;
+            this.firmCostCheckBox.CheckedChanged -= this.Update_Monthly;
+            this.firmCostCheckBox.CheckedChanged -= this.Update_30d90d6m1yTable;
+            this.forecastCostCheckBox.CheckedChanged -= this.forecastCheckBox_CheckedChanged;
+            this.forecastCostCheckBox.CheckedChanged -= this.Update_Monthly;
+            this.forecastCostCheckBox.CheckedChanged -= this.Update_30d90d6m1yTable;
+            this.shippedCostCheckBox.CheckedChanged -= this.totalCheckBox_CheckedChanged;
+            this.shippedCostCheckBox.CheckedChanged -= this.Update_Monthly;
+            this.shippedCostCheckBox.CheckedChanged -= this.Update_30d90d6m1yTable;
+            firmCostCheckBox.Checked = true;
+            forecastCostCheckBox.Checked = true;
+            shippedCostCheckBox.Checked = true;
+            this.firmCostCheckBox.CheckedChanged += this.firmCheckBox_CheckedChanged;
+            this.firmCostCheckBox.CheckedChanged += this.Update_Monthly;
+            this.firmCostCheckBox.CheckedChanged += this.Update_30d90d6m1yTable;
+            this.forecastCostCheckBox.CheckedChanged += this.forecastCheckBox_CheckedChanged;
+            this.forecastCostCheckBox.CheckedChanged += this.Update_Monthly;
+            this.forecastCostCheckBox.CheckedChanged += this.Update_30d90d6m1yTable;
+            this.shippedCostCheckBox.CheckedChanged += this.totalCheckBox_CheckedChanged;
+            this.shippedCostCheckBox.CheckedChanged += this.Update_Monthly;
+            this.shippedCostCheckBox.CheckedChanged += this.Update_30d90d6m1yTable;
         }
 
         private void firmCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            this.selectAllCheckBox.CheckedChanged -= this.selectAllCheckBox_CheckedChanged;
-            this.selectAllCheckBox.CheckedChanged -= this.Update_Monthly;
-            selectAllCheckBox.Checked = false;
-            this.selectAllCheckBox.CheckedChanged += this.selectAllCheckBox_CheckedChanged;
-            this.selectAllCheckBox.CheckedChanged += this.Update_Monthly;
+            this.selectAllCostCheckBox.CheckedChanged -= this.selectAllCheckBox_CheckedChanged;
+            this.selectAllCostCheckBox.CheckedChanged -= this.Update_Monthly;
+            this.selectAllCostCheckBox.CheckedChanged -= this.Update_30d90d6m1yTable;
+            selectAllCostCheckBox.Checked = false;
+            this.selectAllCostCheckBox.CheckedChanged += this.selectAllCheckBox_CheckedChanged;
+            this.selectAllCostCheckBox.CheckedChanged += this.Update_Monthly;
+            this.selectAllCostCheckBox.CheckedChanged += this.Update_30d90d6m1yTable;
         }
 
         private void forecastCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            this.selectAllCheckBox.CheckedChanged -= this.selectAllCheckBox_CheckedChanged;
-            this.selectAllCheckBox.CheckedChanged -= this.Update_Monthly;
-            selectAllCheckBox.Checked = false;
-            this.selectAllCheckBox.CheckedChanged += this.selectAllCheckBox_CheckedChanged;
-            this.selectAllCheckBox.CheckedChanged += this.Update_Monthly;
+            this.selectAllCostCheckBox.CheckedChanged -= this.selectAllCheckBox_CheckedChanged;
+            this.selectAllCostCheckBox.CheckedChanged -= this.Update_Monthly;
+            this.selectAllCostCheckBox.CheckedChanged -= this.Update_30d90d6m1yTable;
+            selectAllCostCheckBox.Checked = false;
+            this.selectAllCostCheckBox.CheckedChanged += this.selectAllCheckBox_CheckedChanged;
+            this.selectAllCostCheckBox.CheckedChanged += this.Update_Monthly;
+            this.selectAllCostCheckBox.CheckedChanged += this.Update_30d90d6m1yTable;
         }
 
         private void totalCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            this.selectAllCheckBox.CheckedChanged -= this.selectAllCheckBox_CheckedChanged;
-            this.selectAllCheckBox.CheckedChanged -= this.Update_Monthly;
-            selectAllCheckBox.Checked = false;
-            this.selectAllCheckBox.CheckedChanged += this.selectAllCheckBox_CheckedChanged;
-            this.selectAllCheckBox.CheckedChanged += this.Update_Monthly;
+            this.selectAllCostCheckBox.CheckedChanged -= this.selectAllCheckBox_CheckedChanged;
+            this.selectAllCostCheckBox.CheckedChanged -= this.Update_Monthly;
+            this.selectAllCostCheckBox.CheckedChanged -= this.Update_30d90d6m1yTable;
+            selectAllCostCheckBox.Checked = false;
+            this.selectAllCostCheckBox.CheckedChanged += this.selectAllCheckBox_CheckedChanged;
+            this.selectAllCostCheckBox.CheckedChanged += this.Update_Monthly;
+            this.selectAllCostCheckBox.CheckedChanged += this.Update_30d90d6m1yTable;
         }
 
         private void dgvSomeDataGridView_SelectionChanged(Object sender, EventArgs e)
@@ -906,7 +1098,7 @@ namespace SO_Delivery_Interface
 
         private void Form1_HelpButtonClicked(object sender, CancelEventArgs e)
         {
-            System.Diagnostics.Process.Start(@"T:\users\Daan Leiva\ProjectsBackUp\so_iNTERFACE\segd\SO_Delivery_Interface\SO_Delivery_Interface\bin\Release\helpHolder.pdf");
+            System.Diagnostics.Process.Start(@"T:\Delivery Assistant\SO_Delivery_Interface\SO_Delivery_Interface\bin\Release\helpFile.pdf");
         }
     }
 }

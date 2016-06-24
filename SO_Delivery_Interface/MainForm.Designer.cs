@@ -59,31 +59,31 @@
             this.removeButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.startDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.idateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.partsListBox = new System.Windows.Forms.ListBox();
             this.linesDataGridView = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.endDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.comparisondateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.changesRadioButton = new System.Windows.Forms.RadioButton();
             this.openLinesRadioButton = new System.Windows.Forms.RadioButton();
             this.rowCounterLabel = new System.Windows.Forms.Label();
             this.iDateLabel = new System.Windows.Forms.Label();
-            this.openTotal_idateLabel = new System.Windows.Forms.Label();
+            this.piecesDue_idateLabel = new System.Windows.Forms.Label();
             this.currentDateLabel = new System.Windows.Forms.Label();
             this.dataGridView_iDate = new System.Windows.Forms.DataGridView();
             this.dataGridView_current = new System.Windows.Forms.DataGridView();
-            this.quarter_iDateGridView = new System.Windows.Forms.DataGridView();
+            this.monthly_iDateGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iDate_yearDropDown = new System.Windows.Forms.ComboBox();
-            this.quarter_currentGridView = new System.Windows.Forms.DataGridView();
+            this.monthly_currentGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -101,13 +101,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.customerAndPartsRadioButton = new System.Windows.Forms.RadioButton();
-            this.openTotal_currentLabel = new System.Windows.Forms.Label();
+            this.piecesDue_currentLabel = new System.Windows.Forms.Label();
             this.date1Label = new System.Windows.Forms.Label();
             this.date2Label = new System.Windows.Forms.Label();
-            this.firmCheckBox = new System.Windows.Forms.CheckBox();
-            this.shippedCheckBox = new System.Windows.Forms.CheckBox();
-            this.forecastCheckBox = new System.Windows.Forms.CheckBox();
-            this.selectAllCheckBox = new System.Windows.Forms.CheckBox();
+            this.firmCostCheckBox = new System.Windows.Forms.CheckBox();
+            this.shippedCostCheckBox = new System.Windows.Forms.CheckBox();
+            this.forecastCostCheckBox = new System.Windows.Forms.CheckBox();
+            this.selectAllCostCheckBox = new System.Windows.Forms.CheckBox();
             this.label15 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -122,16 +122,18 @@
             this.Forecast = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Shipped = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CostT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Shipped2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CostTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.linesDataGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_iDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_current)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quarter_iDateGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quarter_currentGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monthly_iDateGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monthly_currentGridView)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -183,6 +185,7 @@
             // 
             // filterDropDown
             // 
+            this.filterDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.filterDropDown.FormattingEnabled = true;
             this.filterDropDown.Location = new System.Drawing.Point(6, 38);
             this.filterDropDown.Name = "filterDropDown";
@@ -241,13 +244,13 @@
             this.label2.TabIndex = 99;
             this.label2.Text = "Total Rows:";
             // 
-            // startDateTimePicker
+            // idateDateTimePicker
             // 
-            this.startDateTimePicker.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startDateTimePicker.Location = new System.Drawing.Point(8, 236);
-            this.startDateTimePicker.Name = "startDateTimePicker";
-            this.startDateTimePicker.Size = new System.Drawing.Size(201, 21);
-            this.startDateTimePicker.TabIndex = 4;
+            this.idateDateTimePicker.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idateDateTimePicker.Location = new System.Drawing.Point(8, 236);
+            this.idateDateTimePicker.Name = "idateDateTimePicker";
+            this.idateDateTimePicker.Size = new System.Drawing.Size(201, 21);
+            this.idateDateTimePicker.TabIndex = 4;
             // 
             // partsListBox
             // 
@@ -275,7 +278,7 @@
             this.linesDataGridView.ReadOnly = true;
             this.linesDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.linesDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.linesDataGridView.Size = new System.Drawing.Size(1331, 242);
+            this.linesDataGridView.Size = new System.Drawing.Size(1382, 242);
             this.linesDataGridView.TabIndex = 99;
             this.linesDataGridView.TabStop = false;
             // 
@@ -283,7 +286,7 @@
             // 
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.endDateTimePicker);
+            this.groupBox1.Controls.Add(this.comparisondateDateTimePicker);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.removeButton);
@@ -292,7 +295,7 @@
             this.groupBox1.Controls.Add(this.filterDropDown);
             this.groupBox1.Controls.Add(this.customersListBox);
             this.groupBox1.Controls.Add(this.addButton);
-            this.groupBox1.Controls.Add(this.startDateTimePicker);
+            this.groupBox1.Controls.Add(this.idateDateTimePicker);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(3, 1);
@@ -322,13 +325,13 @@
             this.label13.TabIndex = 15;
             this.label13.Text = "Selection Dates";
             // 
-            // endDateTimePicker
+            // comparisondateDateTimePicker
             // 
-            this.endDateTimePicker.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.endDateTimePicker.Location = new System.Drawing.Point(8, 266);
-            this.endDateTimePicker.Name = "endDateTimePicker";
-            this.endDateTimePicker.Size = new System.Drawing.Size(201, 21);
-            this.endDateTimePicker.TabIndex = 5;
+            this.comparisondateDateTimePicker.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comparisondateDateTimePicker.Location = new System.Drawing.Point(8, 266);
+            this.comparisondateDateTimePicker.Name = "comparisondateDateTimePicker";
+            this.comparisondateDateTimePicker.Size = new System.Drawing.Size(201, 21);
+            this.comparisondateDateTimePicker.TabIndex = 5;
             // 
             // label12
             // 
@@ -394,17 +397,17 @@
             this.iDateLabel.TabIndex = 0;
             this.iDateLabel.Text = "Date #1";
             // 
-            // openTotal_idateLabel
+            // piecesDue_idateLabel
             // 
-            this.openTotal_idateLabel.AutoSize = true;
-            this.openTotal_idateLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.openTotal_idateLabel.Location = new System.Drawing.Point(246, 26);
-            this.openTotal_idateLabel.MinimumSize = new System.Drawing.Size(40, 2);
-            this.openTotal_idateLabel.Name = "openTotal_idateLabel";
-            this.openTotal_idateLabel.Size = new System.Drawing.Size(40, 13);
-            this.openTotal_idateLabel.TabIndex = 3;
-            this.openTotal_idateLabel.Text = " ";
-            this.openTotal_idateLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.piecesDue_idateLabel.AutoSize = true;
+            this.piecesDue_idateLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.piecesDue_idateLabel.Location = new System.Drawing.Point(246, 26);
+            this.piecesDue_idateLabel.MinimumSize = new System.Drawing.Size(40, 2);
+            this.piecesDue_idateLabel.Name = "piecesDue_idateLabel";
+            this.piecesDue_idateLabel.Size = new System.Drawing.Size(40, 13);
+            this.piecesDue_idateLabel.TabIndex = 3;
+            this.piecesDue_idateLabel.Text = " ";
+            this.piecesDue_idateLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // currentDateLabel
             // 
@@ -422,6 +425,7 @@
             this.dataGridView_iDate.AllowUserToDeleteRows = false;
             this.dataGridView_iDate.AllowUserToResizeColumns = false;
             this.dataGridView_iDate.AllowUserToResizeRows = false;
+            this.dataGridView_iDate.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView_iDate.BackgroundColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -436,7 +440,8 @@
             this.Firm,
             this.Forecast,
             this.Shipped,
-            this.Total});
+            this.Total,
+            this.CostT});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -453,7 +458,7 @@
             this.dataGridView_iDate.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView_iDate.RowTemplate.ReadOnly = true;
             this.dataGridView_iDate.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView_iDate.Size = new System.Drawing.Size(283, 133);
+            this.dataGridView_iDate.Size = new System.Drawing.Size(351, 133);
             this.dataGridView_iDate.TabIndex = 99;
             this.dataGridView_iDate.TabStop = false;
             // 
@@ -463,13 +468,15 @@
             this.dataGridView_current.AllowUserToDeleteRows = false;
             this.dataGridView_current.AllowUserToResizeColumns = false;
             this.dataGridView_current.AllowUserToResizeRows = false;
+            this.dataGridView_current.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView_current.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView_current.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_current.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.Shipped2,
-            this.dataGridViewTextBoxColumn3});
+            this.dataGridViewTextBoxColumn3,
+            this.CostTT});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -486,19 +493,19 @@
             this.dataGridView_current.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView_current.RowTemplate.ReadOnly = true;
             this.dataGridView_current.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView_current.Size = new System.Drawing.Size(283, 133);
+            this.dataGridView_current.Size = new System.Drawing.Size(351, 133);
             this.dataGridView_current.TabIndex = 1;
             this.dataGridView_current.TabStop = false;
             // 
-            // quarter_iDateGridView
+            // monthly_iDateGridView
             // 
-            this.quarter_iDateGridView.AllowUserToAddRows = false;
-            this.quarter_iDateGridView.AllowUserToDeleteRows = false;
-            this.quarter_iDateGridView.AllowUserToResizeColumns = false;
-            this.quarter_iDateGridView.AllowUserToResizeRows = false;
-            this.quarter_iDateGridView.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.quarter_iDateGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.quarter_iDateGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.monthly_iDateGridView.AllowUserToAddRows = false;
+            this.monthly_iDateGridView.AllowUserToDeleteRows = false;
+            this.monthly_iDateGridView.AllowUserToResizeColumns = false;
+            this.monthly_iDateGridView.AllowUserToResizeRows = false;
+            this.monthly_iDateGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.monthly_iDateGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.monthly_iDateGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
@@ -511,18 +518,18 @@
             dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.quarter_iDateGridView.DefaultCellStyle = dataGridViewCellStyle12;
-            this.quarter_iDateGridView.Location = new System.Drawing.Point(421, 43);
-            this.quarter_iDateGridView.MultiSelect = false;
-            this.quarter_iDateGridView.Name = "quarter_iDateGridView";
-            this.quarter_iDateGridView.ReadOnly = true;
-            this.quarter_iDateGridView.RowHeadersWidth = 34;
-            this.quarter_iDateGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.quarter_iDateGridView.RowTemplate.ReadOnly = true;
-            this.quarter_iDateGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.quarter_iDateGridView.Size = new System.Drawing.Size(338, 288);
-            this.quarter_iDateGridView.TabIndex = 99;
-            this.quarter_iDateGridView.TabStop = false;
+            this.monthly_iDateGridView.DefaultCellStyle = dataGridViewCellStyle12;
+            this.monthly_iDateGridView.Location = new System.Drawing.Point(478, 43);
+            this.monthly_iDateGridView.MultiSelect = false;
+            this.monthly_iDateGridView.Name = "monthly_iDateGridView";
+            this.monthly_iDateGridView.ReadOnly = true;
+            this.monthly_iDateGridView.RowHeadersWidth = 34;
+            this.monthly_iDateGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.monthly_iDateGridView.RowTemplate.ReadOnly = true;
+            this.monthly_iDateGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.monthly_iDateGridView.Size = new System.Drawing.Size(338, 288);
+            this.monthly_iDateGridView.TabIndex = 99;
+            this.monthly_iDateGridView.TabStop = false;
             // 
             // dataGridViewTextBoxColumn4
             // 
@@ -570,22 +577,23 @@
             // 
             // iDate_yearDropDown
             // 
+            this.iDate_yearDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.iDate_yearDropDown.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iDate_yearDropDown.FormattingEnabled = true;
-            this.iDate_yearDropDown.Location = new System.Drawing.Point(568, 13);
+            this.iDate_yearDropDown.Location = new System.Drawing.Point(625, 13);
             this.iDate_yearDropDown.Name = "iDate_yearDropDown";
             this.iDate_yearDropDown.Size = new System.Drawing.Size(52, 21);
             this.iDate_yearDropDown.TabIndex = 0;
             // 
-            // quarter_currentGridView
+            // monthly_currentGridView
             // 
-            this.quarter_currentGridView.AllowUserToAddRows = false;
-            this.quarter_currentGridView.AllowUserToDeleteRows = false;
-            this.quarter_currentGridView.AllowUserToResizeColumns = false;
-            this.quarter_currentGridView.AllowUserToResizeRows = false;
-            this.quarter_currentGridView.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.quarter_currentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.quarter_currentGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.monthly_currentGridView.AllowUserToAddRows = false;
+            this.monthly_currentGridView.AllowUserToDeleteRows = false;
+            this.monthly_currentGridView.AllowUserToResizeColumns = false;
+            this.monthly_currentGridView.AllowUserToResizeRows = false;
+            this.monthly_currentGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.monthly_currentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.monthly_currentGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn9,
@@ -598,18 +606,18 @@
             dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.quarter_currentGridView.DefaultCellStyle = dataGridViewCellStyle18;
-            this.quarter_currentGridView.Location = new System.Drawing.Point(767, 43);
-            this.quarter_currentGridView.MultiSelect = false;
-            this.quarter_currentGridView.Name = "quarter_currentGridView";
-            this.quarter_currentGridView.ReadOnly = true;
-            this.quarter_currentGridView.RowHeadersWidth = 34;
-            this.quarter_currentGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.quarter_currentGridView.RowTemplate.ReadOnly = true;
-            this.quarter_currentGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.quarter_currentGridView.Size = new System.Drawing.Size(336, 288);
-            this.quarter_currentGridView.TabIndex = 99;
-            this.quarter_currentGridView.TabStop = false;
+            this.monthly_currentGridView.DefaultCellStyle = dataGridViewCellStyle18;
+            this.monthly_currentGridView.Location = new System.Drawing.Point(824, 43);
+            this.monthly_currentGridView.MultiSelect = false;
+            this.monthly_currentGridView.Name = "monthly_currentGridView";
+            this.monthly_currentGridView.ReadOnly = true;
+            this.monthly_currentGridView.RowHeadersWidth = 34;
+            this.monthly_currentGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.monthly_currentGridView.RowTemplate.ReadOnly = true;
+            this.monthly_currentGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.monthly_currentGridView.Size = new System.Drawing.Size(336, 288);
+            this.monthly_currentGridView.TabIndex = 99;
+            this.monthly_currentGridView.TabStop = false;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -659,7 +667,7 @@
             // 
             this.partsRadioButton.AutoSize = true;
             this.partsRadioButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.partsRadioButton.Location = new System.Drawing.Point(643, 334);
+            this.partsRadioButton.Location = new System.Drawing.Point(700, 334);
             this.partsRadioButton.Name = "partsRadioButton";
             this.partsRadioButton.Size = new System.Drawing.Size(60, 17);
             this.partsRadioButton.TabIndex = 6;
@@ -671,7 +679,7 @@
             // 
             this.customersRadioButton.AutoSize = true;
             this.customersRadioButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customersRadioButton.Location = new System.Drawing.Point(708, 334);
+            this.customersRadioButton.Location = new System.Drawing.Point(765, 334);
             this.customersRadioButton.Name = "customersRadioButton";
             this.customersRadioButton.Size = new System.Drawing.Size(86, 17);
             this.customersRadioButton.TabIndex = 7;
@@ -689,7 +697,7 @@
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Location = new System.Drawing.Point(310, 151);
+            this.groupBox3.Location = new System.Drawing.Point(368, 151);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(104, 180);
             this.groupBox3.TabIndex = 0;
@@ -785,7 +793,7 @@
             // 
             this.customerAndPartsRadioButton.AutoSize = true;
             this.customerAndPartsRadioButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customerAndPartsRadioButton.Location = new System.Drawing.Point(798, 334);
+            this.customerAndPartsRadioButton.Location = new System.Drawing.Point(855, 334);
             this.customerAndPartsRadioButton.Name = "customerAndPartsRadioButton";
             this.customerAndPartsRadioButton.Size = new System.Drawing.Size(130, 17);
             this.customerAndPartsRadioButton.TabIndex = 8;
@@ -793,21 +801,21 @@
             this.customerAndPartsRadioButton.Text = "By Customer and Part";
             this.customerAndPartsRadioButton.UseVisualStyleBackColor = true;
             // 
-            // openTotal_currentLabel
+            // piecesDue_currentLabel
             // 
-            this.openTotal_currentLabel.AutoSize = true;
-            this.openTotal_currentLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.openTotal_currentLabel.Location = new System.Drawing.Point(246, 182);
-            this.openTotal_currentLabel.MinimumSize = new System.Drawing.Size(40, 2);
-            this.openTotal_currentLabel.Name = "openTotal_currentLabel";
-            this.openTotal_currentLabel.Size = new System.Drawing.Size(40, 13);
-            this.openTotal_currentLabel.TabIndex = 8;
-            this.openTotal_currentLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.piecesDue_currentLabel.AutoSize = true;
+            this.piecesDue_currentLabel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.piecesDue_currentLabel.Location = new System.Drawing.Point(246, 182);
+            this.piecesDue_currentLabel.MinimumSize = new System.Drawing.Size(40, 2);
+            this.piecesDue_currentLabel.Name = "piecesDue_currentLabel";
+            this.piecesDue_currentLabel.Size = new System.Drawing.Size(40, 13);
+            this.piecesDue_currentLabel.TabIndex = 8;
+            this.piecesDue_currentLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // date1Label
             // 
             this.date1Label.AutoSize = true;
-            this.date1Label.Location = new System.Drawing.Point(422, 27);
+            this.date1Label.Location = new System.Drawing.Point(479, 27);
             this.date1Label.Name = "date1Label";
             this.date1Label.Size = new System.Drawing.Size(32, 13);
             this.date1Label.TabIndex = 22;
@@ -816,65 +824,65 @@
             // date2Label
             // 
             this.date2Label.AutoSize = true;
-            this.date2Label.Location = new System.Drawing.Point(769, 27);
+            this.date2Label.Location = new System.Drawing.Point(826, 27);
             this.date2Label.Name = "date2Label";
-            this.date2Label.Size = new System.Drawing.Size(66, 13);
+            this.date2Label.Size = new System.Drawing.Size(89, 13);
             this.date2Label.TabIndex = 23;
-            this.date2Label.Text = "Curent Date";
+            this.date2Label.Text = "Comparison Date";
             // 
-            // firmCheckBox
+            // firmCostCheckBox
             // 
-            this.firmCheckBox.AutoSize = true;
-            this.firmCheckBox.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firmCheckBox.Location = new System.Drawing.Point(916, 11);
-            this.firmCheckBox.Name = "firmCheckBox";
-            this.firmCheckBox.Size = new System.Drawing.Size(46, 17);
-            this.firmCheckBox.TabIndex = 2;
-            this.firmCheckBox.Text = "Firm";
-            this.firmCheckBox.UseVisualStyleBackColor = true;
-            this.firmCheckBox.CheckedChanged += new System.EventHandler(this.firmCheckBox_CheckedChanged);
+            this.firmCostCheckBox.AutoSize = true;
+            this.firmCostCheckBox.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.firmCostCheckBox.Location = new System.Drawing.Point(973, 11);
+            this.firmCostCheckBox.Name = "firmCostCheckBox";
+            this.firmCostCheckBox.Size = new System.Drawing.Size(46, 17);
+            this.firmCostCheckBox.TabIndex = 2;
+            this.firmCostCheckBox.Text = "Firm";
+            this.firmCostCheckBox.UseVisualStyleBackColor = true;
+            this.firmCostCheckBox.CheckedChanged += new System.EventHandler(this.firmCheckBox_CheckedChanged);
             // 
-            // shippedCheckBox
+            // shippedCostCheckBox
             // 
-            this.shippedCheckBox.AutoSize = true;
-            this.shippedCheckBox.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shippedCheckBox.Location = new System.Drawing.Point(1042, 11);
-            this.shippedCheckBox.Name = "shippedCheckBox";
-            this.shippedCheckBox.Size = new System.Drawing.Size(64, 17);
-            this.shippedCheckBox.TabIndex = 4;
-            this.shippedCheckBox.Text = "Shipped";
-            this.shippedCheckBox.UseVisualStyleBackColor = true;
-            this.shippedCheckBox.CheckedChanged += new System.EventHandler(this.totalCheckBox_CheckedChanged);
+            this.shippedCostCheckBox.AutoSize = true;
+            this.shippedCostCheckBox.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shippedCostCheckBox.Location = new System.Drawing.Point(1099, 11);
+            this.shippedCostCheckBox.Name = "shippedCostCheckBox";
+            this.shippedCostCheckBox.Size = new System.Drawing.Size(64, 17);
+            this.shippedCostCheckBox.TabIndex = 4;
+            this.shippedCostCheckBox.Text = "Shipped";
+            this.shippedCostCheckBox.UseVisualStyleBackColor = true;
+            this.shippedCostCheckBox.CheckedChanged += new System.EventHandler(this.totalCheckBox_CheckedChanged);
             // 
-            // forecastCheckBox
+            // forecastCostCheckBox
             // 
-            this.forecastCheckBox.AutoSize = true;
-            this.forecastCheckBox.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.forecastCheckBox.Location = new System.Drawing.Point(968, 11);
-            this.forecastCheckBox.Name = "forecastCheckBox";
-            this.forecastCheckBox.Size = new System.Drawing.Size(68, 17);
-            this.forecastCheckBox.TabIndex = 3;
-            this.forecastCheckBox.Text = "Forecast";
-            this.forecastCheckBox.UseVisualStyleBackColor = true;
-            this.forecastCheckBox.CheckedChanged += new System.EventHandler(this.forecastCheckBox_CheckedChanged);
+            this.forecastCostCheckBox.AutoSize = true;
+            this.forecastCostCheckBox.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forecastCostCheckBox.Location = new System.Drawing.Point(1025, 11);
+            this.forecastCostCheckBox.Name = "forecastCostCheckBox";
+            this.forecastCostCheckBox.Size = new System.Drawing.Size(68, 17);
+            this.forecastCostCheckBox.TabIndex = 3;
+            this.forecastCostCheckBox.Text = "Forecast";
+            this.forecastCostCheckBox.UseVisualStyleBackColor = true;
+            this.forecastCostCheckBox.CheckedChanged += new System.EventHandler(this.forecastCheckBox_CheckedChanged);
             // 
-            // selectAllCheckBox
+            // selectAllCostCheckBox
             // 
-            this.selectAllCheckBox.AutoSize = true;
-            this.selectAllCheckBox.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectAllCheckBox.Location = new System.Drawing.Point(841, 11);
-            this.selectAllCheckBox.Name = "selectAllCheckBox";
-            this.selectAllCheckBox.Size = new System.Drawing.Size(69, 17);
-            this.selectAllCheckBox.TabIndex = 1;
-            this.selectAllCheckBox.Text = "Select All";
-            this.selectAllCheckBox.UseVisualStyleBackColor = true;
-            this.selectAllCheckBox.CheckedChanged += new System.EventHandler(this.selectAllCheckBox_CheckedChanged);
+            this.selectAllCostCheckBox.AutoSize = true;
+            this.selectAllCostCheckBox.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectAllCostCheckBox.Location = new System.Drawing.Point(898, 11);
+            this.selectAllCostCheckBox.Name = "selectAllCostCheckBox";
+            this.selectAllCostCheckBox.Size = new System.Drawing.Size(69, 17);
+            this.selectAllCostCheckBox.TabIndex = 1;
+            this.selectAllCostCheckBox.Text = "Select All";
+            this.selectAllCostCheckBox.UseVisualStyleBackColor = true;
+            this.selectAllCostCheckBox.CheckedChanged += new System.EventHandler(this.selectAllCheckBox_CheckedChanged);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(767, 12);
+            this.label15.Location = new System.Drawing.Point(824, 12);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(70, 13);
             this.label15.TabIndex = 3;
@@ -883,7 +891,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::SO_Delivery_Interface.Properties.Resources.ICO;
-            this.pictureBox1.Location = new System.Drawing.Point(311, 43);
+            this.pictureBox1.Location = new System.Drawing.Point(369, 43);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(103, 105);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -896,9 +904,9 @@
             this.label17.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(186, 26);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(58, 13);
+            this.label17.Size = new System.Drawing.Size(59, 13);
             this.label17.TabIndex = 18;
-            this.label17.Text = "Total Lines";
+            this.label17.Text = "Pieces Due";
             // 
             // label18
             // 
@@ -906,15 +914,15 @@
             this.label18.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(186, 182);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(58, 13);
+            this.label18.Size = new System.Drawing.Size(59, 13);
             this.label18.TabIndex = 31;
-            this.label18.Text = "Total Lines";
+            this.label18.Text = "Pieces Due";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(533, 17);
+            this.label4.Location = new System.Drawing.Point(590, 17);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 13);
             this.label4.TabIndex = 32;
@@ -931,29 +939,29 @@
             this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.pictureBox1);
             this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.selectAllCheckBox);
-            this.groupBox2.Controls.Add(this.forecastCheckBox);
-            this.groupBox2.Controls.Add(this.shippedCheckBox);
-            this.groupBox2.Controls.Add(this.firmCheckBox);
+            this.groupBox2.Controls.Add(this.selectAllCostCheckBox);
+            this.groupBox2.Controls.Add(this.forecastCostCheckBox);
+            this.groupBox2.Controls.Add(this.shippedCostCheckBox);
+            this.groupBox2.Controls.Add(this.firmCostCheckBox);
             this.groupBox2.Controls.Add(this.date2Label);
             this.groupBox2.Controls.Add(this.date1Label);
-            this.groupBox2.Controls.Add(this.openTotal_currentLabel);
+            this.groupBox2.Controls.Add(this.piecesDue_currentLabel);
             this.groupBox2.Controls.Add(this.customerAndPartsRadioButton);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.customersRadioButton);
             this.groupBox2.Controls.Add(this.partsRadioButton);
-            this.groupBox2.Controls.Add(this.quarter_currentGridView);
+            this.groupBox2.Controls.Add(this.monthly_currentGridView);
             this.groupBox2.Controls.Add(this.iDate_yearDropDown);
-            this.groupBox2.Controls.Add(this.quarter_iDateGridView);
+            this.groupBox2.Controls.Add(this.monthly_iDateGridView);
             this.groupBox2.Controls.Add(this.dataGridView_current);
             this.groupBox2.Controls.Add(this.dataGridView_iDate);
             this.groupBox2.Controls.Add(this.currentDateLabel);
-            this.groupBox2.Controls.Add(this.openTotal_idateLabel);
+            this.groupBox2.Controls.Add(this.piecesDue_idateLabel);
             this.groupBox2.Controls.Add(this.iDateLabel);
             this.groupBox2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(222, 1);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1115, 357);
+            this.groupBox2.Size = new System.Drawing.Size(1166, 357);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parts Due";
@@ -980,7 +988,7 @@
             // 
             this.ByAllRadioButton.AutoSize = true;
             this.ByAllRadioButton.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ByAllRadioButton.Location = new System.Drawing.Point(579, 334);
+            this.ByAllRadioButton.Location = new System.Drawing.Point(636, 334);
             this.ByAllRadioButton.Name = "ByAllRadioButton";
             this.ByAllRadioButton.Size = new System.Drawing.Size(51, 17);
             this.ByAllRadioButton.TabIndex = 5;
@@ -992,7 +1000,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(857, 28);
+            this.label8.Location = new System.Drawing.Point(914, 28);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(246, 12);
             this.label8.TabIndex = 18;
@@ -1002,70 +1010,94 @@
             // 
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.Firm.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Firm.FillWeight = 88.75441F;
             this.Firm.HeaderText = "Firm";
+            this.Firm.MinimumWidth = 50;
             this.Firm.Name = "Firm";
             this.Firm.ReadOnly = true;
-            this.Firm.Width = 48;
             // 
             // Forecast
             // 
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.Forecast.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Forecast.FillWeight = 65.54845F;
             this.Forecast.HeaderText = "Forecast";
+            this.Forecast.MinimumWidth = 50;
             this.Forecast.Name = "Forecast";
             this.Forecast.ReadOnly = true;
-            this.Forecast.Width = 57;
             // 
             // Shipped
             // 
+            this.Shipped.FillWeight = 48.52119F;
             this.Shipped.HeaderText = "Shipped";
+            this.Shipped.MinimumWidth = 50;
             this.Shipped.Name = "Shipped";
             this.Shipped.ReadOnly = true;
-            this.Shipped.Width = 80;
             // 
             // Total
             // 
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.Total.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Total.FillWeight = 35.75464F;
             this.Total.HeaderText = "Total";
+            this.Total.MinimumWidth = 55;
             this.Total.Name = "Total";
             this.Total.ReadOnly = true;
-            this.Total.Width = 65;
+            // 
+            // CostT
+            // 
+            this.CostT.FillWeight = 261.4213F;
+            this.CostT.HeaderText = "Cost";
+            this.CostT.MinimumWidth = 100;
+            this.CostT.Name = "CostT";
+            this.CostT.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
+            this.dataGridViewTextBoxColumn1.FillWeight = 92.49162F;
             this.dataGridViewTextBoxColumn1.HeaderText = "Firm";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 50;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 48;
             // 
             // dataGridViewTextBoxColumn2
             // 
+            this.dataGridViewTextBoxColumn2.FillWeight = 92.93346F;
             this.dataGridViewTextBoxColumn2.HeaderText = "Forecast";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 50;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 57;
             // 
             // Shipped2
             // 
+            this.Shipped2.FillWeight = 93.48786F;
             this.Shipped2.HeaderText = "Shipped";
+            this.Shipped2.MinimumWidth = 50;
             this.Shipped2.Name = "Shipped2";
             this.Shipped2.ReadOnly = true;
-            this.Shipped2.Width = 80;
             // 
             // dataGridViewTextBoxColumn3
             // 
+            this.dataGridViewTextBoxColumn3.FillWeight = 94.18352F;
             this.dataGridViewTextBoxColumn3.HeaderText = "Total";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 55;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 65;
+            // 
+            // CostTT
+            // 
+            this.CostTT.FillWeight = 126.9036F;
+            this.CostTT.HeaderText = "Cost";
+            this.CostTT.MinimumWidth = 100;
+            this.CostTT.Name = "CostTT";
+            this.CostTT.ReadOnly = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1349, 622);
+            this.ClientSize = new System.Drawing.Size(1400, 622);
             this.Controls.Add(this.rowCounterLabel);
             this.Controls.Add(this.openLinesRadioButton);
             this.Controls.Add(this.changesRadioButton);
@@ -1087,8 +1119,8 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_iDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_current)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quarter_iDateGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quarter_currentGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monthly_iDateGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monthly_currentGridView)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1112,7 +1144,7 @@
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button removeButton;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker startDateTimePicker;
+        private System.Windows.Forms.DateTimePicker idateDateTimePicker;
         private System.Windows.Forms.ListBox partsListBox;
         private System.Windows.Forms.DataGridView linesDataGridView;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -1121,23 +1153,23 @@
         private System.Windows.Forms.Label rowCounterLabel;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DateTimePicker endDateTimePicker;
+        private System.Windows.Forms.DateTimePicker comparisondateDateTimePicker;
         public System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label iDateLabel;
-        private System.Windows.Forms.Label openTotal_idateLabel;
+        private System.Windows.Forms.Label piecesDue_idateLabel;
         private System.Windows.Forms.Label currentDateLabel;
         private System.Windows.Forms.DataGridView dataGridView_iDate;
         private System.Windows.Forms.DataGridView dataGridView_current;
-        private System.Windows.Forms.DataGridView quarter_iDateGridView;
+        private System.Windows.Forms.DataGridView monthly_iDateGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cost;
         private System.Windows.Forms.ComboBox iDate_yearDropDown;
-        private System.Windows.Forms.DataGridView quarter_currentGridView;
+        private System.Windows.Forms.DataGridView monthly_currentGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
@@ -1155,13 +1187,13 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.RadioButton customerAndPartsRadioButton;
-        private System.Windows.Forms.Label openTotal_currentLabel;
+        private System.Windows.Forms.Label piecesDue_currentLabel;
         private System.Windows.Forms.Label date1Label;
         private System.Windows.Forms.Label date2Label;
-        private System.Windows.Forms.CheckBox firmCheckBox;
-        private System.Windows.Forms.CheckBox shippedCheckBox;
-        private System.Windows.Forms.CheckBox forecastCheckBox;
-        private System.Windows.Forms.CheckBox selectAllCheckBox;
+        private System.Windows.Forms.CheckBox firmCostCheckBox;
+        private System.Windows.Forms.CheckBox shippedCostCheckBox;
+        private System.Windows.Forms.CheckBox forecastCostCheckBox;
+        private System.Windows.Forms.CheckBox selectAllCostCheckBox;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label17;
@@ -1176,10 +1208,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Forecast;
         private System.Windows.Forms.DataGridViewTextBoxColumn Shipped;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CostT;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Shipped2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CostTT;
     }
 }
 
